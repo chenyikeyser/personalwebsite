@@ -1,8 +1,5 @@
 ### Just some thoughts and life
-#Spur Group Intern
-
-<!--
-**chenyikeyser/chenyikeyser** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Spur Group Intern
 
 Here are some ideas to get you started:
 
