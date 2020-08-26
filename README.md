@@ -1,4 +1,4 @@
-### Hi there 👋
+### Just some thoughts and life
 #Spur Group Intern
 
 <!--
