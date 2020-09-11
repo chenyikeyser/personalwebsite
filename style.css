@@ -1,20 +1,71 @@
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+
+
+
+
 body {
     margin: 0;
     padding: 0;
-    background: url(https://images.unsplash.com/photo-1539923779676-1a9bddf986db?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb);
+    background-color: aliceblue;
     background-size: cover;
+    
+    background-image: url(cali%202.jpeg);
+    background-repeat: no-repeat;
+   
+    
 }
 
+
 .box {
-    width: 900px;
+    width: full;
+    height: 800px;
     background: rgba(0, 0, 0, 0.4);
     padding: 100px;
     text-align: center;
     margin: auto;
-    margin-top: 5%;
+    /*margin-top: 5%;*/
     color: white;
     font-family: 'Century Gothic', sans-serif;
 }
+
+
+
+
 
 .box-img {
     border-radius: 50%;
@@ -23,19 +74,21 @@ body {
 }
 
 .box h1 {
-    font-size: 75px;
+    font-size: 100px;
     letter-spacing: 4px;
     font-weight: 100;
 }
 
 .box h5 {
-    font-size: 20px;
+    font-size: 35px;
     letter-spacing: 3px;
     font-weight: 100;
 }
 
 .box p {
     text-align: justify;
+    text-align: center;
+    
 }
 
 ul {
@@ -60,10 +113,85 @@ ul {
     color: #b9b9b9;
 }
 
-.img {
+
+
+
+/* About Me */
+
+.about img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
     ;
+}
+
+.about {
+    width: 900px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 100px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-family: 'Century Gothic', sans-serif;
+}
+
+
+.about h1 {
+    font-size: 30px;
+    letter-spacing: 4px;
+    font-weight: 100;
+}
+
+.about h5 {
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.about p {
+    text-align: center;
+    
+}
+
+.blog li a:hover {
+    color: #b9b9b9;
+}
+
+
+/* Blog Posts */
+.blog {
+    width: 900px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 100px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    color: white;
+    font-family: 'Century Gothic', sans-serif;
+}
+
+
+.blog h1 {
+    font-size: 30px;
+    letter-spacing: 4px;
+    font-weight: 100;
+}
+
+.blog h5 {
+    font-size: 15px;
+    letter-spacing: 3px;
+    font-weight: 100;
+    text-align: left;
+}
+
+.blog p {
+    text-align: justify;
+    
+}
+
+.blog li a:hover {
+    color: #b9b9b9;
 }
