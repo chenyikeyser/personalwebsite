@@ -37,18 +37,14 @@ body, html {
 
 
 
-
 body {
     margin: 0;
     padding: 0;
     background-color: aliceblue;
     background-size: cover;
-    
-    background-image: url(cali%202.jpeg);
-    background-repeat: no-repeat;
-   
-    
 }
+
+
 
 
 .box {
@@ -67,10 +63,11 @@ body {
 
 
 
-.box-img {
-    border-radius: 50%;
+.box img {
     width: 200px;
     height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .box h1 {
@@ -123,7 +120,7 @@ ul {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    ;
+
 }
 
 .about {
