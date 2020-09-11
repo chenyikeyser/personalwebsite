@@ -60,7 +60,7 @@ ul {
     color: #b9b9b9;
 }
 
-img {
+.img {
     width: 150px;
     height: 150px;
     object-fit: cover;
