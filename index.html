@@ -8,6 +8,36 @@
     <title>Chenyi Keyser Website</title>
 </head>
 
+ 
+    
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Home is where the heart is..</p>
+</div>
+
+<div id="News" class="tabcontent">
+  <h3>News</h3>
+  <p>Some news this fine day!</p>
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Who we are and what we do.</p>
+</div>    
+    
+    
+    
+    
 <body>
 
     <div class="box">
@@ -18,21 +48,22 @@
         <h1>Chenyi Keyser</h1>
         <h5>Emmanuel College</h5>
         <h5>Economics Student - Finance Concentration</h5>
-
+        
+    
 
         <ul>
             <li><a href="mailto:chenyi.keyser@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></li>
             <li><a href="https://www.linkedin.com/in/chenyikeyser/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-            <li><a href="https://github.com/chenyikeyser/ChenyiKeyser"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
+            <li><a href="https://github.com/chenyikeyser/ck"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
         </ul>
 
-
+ 
     </div>
 
-    <div class="box">
+    <div class="about">
 
-        <img src="IMG_1116.jpeg" />
-        <h5>About</h5>
+        <img src="IMG_1116.jpeg" class="img-about" />
+        <h1>About</h1>
 
         <p>
             Junior Economics student studying at Emmanuel College. Passion for finance, business, and management. Experienced in working in Sales and Learning + Development for management consulting. Research and design sales content for internal training purposes. Worked with documentation, learning management systems, and creating training plans
@@ -40,13 +71,13 @@
 
     </div>
 
-    <div class="box">
+    <div class="blog">
 
-        <h5>Blog</h5>
-        <h6>Being Busy</h6>
-        <p>
+        <h1>Blog</h1>
+        <h5 class="sub">Being Busy</h5>
+        <h5>
             Humans love to be busy, well, most do these days. We live in a world where one can make money doing almost anything they set their mind too. Being busy is looked at as cool, important, someone who has their life together. The sad thing is that when a person is not busy, they are looked at as lesser and not equal. We correlate busyness with success. The hustle culture in the world today places a heavy emphasis on work and success. The calendar is filled with meetings and calls and no time for a personal life. We start to worship our neat and busy calendars. “I’m too busy to hang out” or “let me check my calendar”. This change in society seems to be recent within the last 10-15 years.
-        </p>
+        </h5>
 
     </div>
 </body></html>
