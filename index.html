@@ -5,98 +5,100 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Chenyi Keyser Website</title>
+    <title>Chenyi Website</title>
 </head>
 
 
 <body>
 
 
-<div id="tablink">
-<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-<button class="tablink" onclick="openPage('Blog', this, 'blue')">Blog</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
-</div>
 
 
-<div id="Home" class="tabcontent">
-    <div class="box">
+    <div id="tablink">
 
+        <button class="tablink" onclick="openPage('Resume', this, 'grey')" id="defaultOpen">Resume</button>
+        <button class="tablink" onclick="openPage('Blog', this, 'grey')">Blog</button>
 
-        <h1>Chenyi Keyser</h1>
-        <h5>Emmanuel College</h5>
-        <h5>Economics Student - Finance Concentration</h5>
-
-
-        <ul>
-            <li><a href="mailto:chenyi.keyser@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/chenyikeyser/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-            <li><a href="https://github.com/chenyikeyser/ck"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
-        </ul>
-
-
+        <button class="tablink" onclick="openPage('About', this, 'grey')">About</button>
+        <button class="tablink" onclick="openPage('Home', this, 'grey')">Home</button>
     </div>
-</div>
 
-<div id="News" class="tabcontent">
-    <h3>News</h3>
-    <p>Some news this fine day!</p>
-</div>
 
-<div id="Blog" class="tabcontent">
+    <div id="Home" class="tabcontent">
+        <div class="box">
 
-    <div class="blog">
 
-        <h1>Blog</h1>
-        <h5 class="sub">Being Busy</h5>
-        <h5>
-            Humans love to be busy, well, most do these days. We live in a world where one can make money doing almost anything they set their mind too. Being busy is looked at as cool, important, someone who has their life together. The sad thing is that when a person is not busy, they are looked at as lesser and not equal. We correlate busyness with success. The hustle culture in the world today places a heavy emphasis on work and success. The calendar is filled with meetings and calls and no time for a personal life. We start to worship our neat and busy calendars. “I’m too busy to hang out” or “let me check my calendar”. This change in society seems to be recent within the last 10-15 years.
-        </h5>
+            <h1>Chenyi Keyser</h1>
+            <h5>Emmanuel College</h5>
+            <h5>Economics Student - Finance Concentration</h5>
 
+
+            <ul>
+                <li><a href="mailto:chenyi.keyser@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/chenyikeyser/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                <li><a href="https://github.com/chenyikeyser/ck"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
+            </ul>
+
+
+        </div>
     </div>
-</div>
 
-<div id="About" class="tabcontent">
-    <div class="about">
-
-        <img src="Images/IMG_1116.jpeg" class="img-about" />
-        <h1>About</h1>
-
-        <p>
-            Junior Economics student studying at Emmanuel College. Passion for finance, business, and management. Experienced in working in Sales and Learning + Development for management consulting. Research and design sales content for internal training purposes. Worked with documentation, learning management systems, and creating training plans
-        </p>
-
+    <div id="Resume" class="tabcontent">
+        <h1>Resume</h1>
+        <iframe src="Resume.pdf" width="100%" height="500px">
+        </iframe>
     </div>
-</div>
 
-<script>
-    function openPage(pageName, elmnt, color) {
-        // Hide all elements with class="tabcontent" by default */
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+    <div id="Blog" class="tabcontent">
+
+        <div class="blog">
+
+            <h1>Blog</h1>
+            <h5 class="sub">Being Busy</h5>
+            <h5>
+                Humans love to be busy, well, most do these days. We live in a world where one can make money doing almost anything they set their mind too. Being busy is looked at as cool, important, someone who has their life together. The sad thing is that when a person is not busy, they are looked at as lesser and not equal. We correlate busyness with success. The hustle culture in the world today places a heavy emphasis on work and success. The calendar is filled with meetings and calls and no time for a personal life. We start to worship our neat and busy calendars. “I’m too busy to hang out” or “let me check my calendar”. This change in society seems to be recent within the last 10-15 years.
+            </h5>
+
+        </div>
+    </div>
+
+    <div id="About" class="tabcontent">
+        <div class="about">
+
+            <img src="Images/IMG_1116.jpeg" class="img-about" />
+            <h1>About</h1>
+
+            <p>
+                Junior Economics student studying at Emmanuel College. Passion for finance, business, and management. Experienced in working in Sales and Learning + Development for management consulting. Research and design sales content for internal training purposes. Worked with documentation, learning management systems, and creating training plans
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+        function openPage(pageName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
         }
 
-        // Remove the background color of all tablinks/buttons
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].style.backgroundColor = "";
-        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
 
-        // Show the specific tab content
-        document.getElementById(pageName).style.display = "block";
-
-        // Add the specific color to the button used to open the tab content
-        elmnt.style.backgroundColor = color;
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-</script>
-
-</body>
-
-</html>
+</body></html>
