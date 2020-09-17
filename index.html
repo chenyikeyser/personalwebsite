@@ -1,56 +1,33 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Chenyi Keyser Website</title>
 </head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
- <div id="home-tabs">
-    
-    
-    <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-    <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-    <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-    <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
-
-    <div id="Home" class="tabcontent">
-      <h3>Home</h3>
-      <p>Home is where the heart is..</p>
-    </div>
-
-    <div id="News" class="tabcontent">
-      <h3>News</h3>
-      <p>Some news this fine day!</p>
-    </div>
-
-    <div id="Contact" class="tabcontent">
-      <h3>Contact</h3>
-      <p>Get in touch, or swing by for a cup of coffee.</p>
-    </div>
-
-    <div id="About" class="tabcontent">
-      <h3>About</h3>
-      <p>Who we are and what we do.</p>
-    </div>    
-
-    </div>   
 
 <body>
+    
 
+<div id="tablink">
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+<button class="tablink" onclick="openPage('Blog', this, 'blue')">Blog</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+</div>   
+
+
+<div id="Home" class="tabcontent">
     <div class="box">
 
-        <img src="cali.jpeg"/>
-        
+       
         <h1>Chenyi Keyser</h1>
         <h5>Emmanuel College</h5>
         <h5>Economics Student - Finance Concentration</h5>
-        
-    
+
 
         <ul>
             <li><a href="mailto:chenyi.keyser@gmail.com"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></li>
@@ -58,19 +35,16 @@
             <li><a href="https://github.com/chenyikeyser/ck"><i class="fa fa-github-square" aria-hidden="true"></i></a></li>
         </ul>
 
- 
-    </div>
-
-    <div class="about">
-
-        <img src="IMG_1116.jpeg" class="img-about" />
-        <h1>About</h1>
-
-        <p>
-            Junior Economics student studying at Emmanuel College. Passion for finance, business, and management. Experienced in working in Sales and Learning + Development for management consulting. Research and design sales content for internal training purposes. Worked with documentation, learning management systems, and creating training plans
-        </p>
 
     </div>
+</div>
+
+<div id="News" class="tabcontent">
+    <h3>News</h3>
+    <p>Some news this fine day!</p>
+</div>
+
+<div id="Blog" class="tabcontent">
 
     <div class="blog">
 
@@ -81,5 +55,48 @@
         </h5>
 
     </div>
-</body></html>
+</div>
 
+<div id="About" class="tabcontent">
+    <div class="about">
+
+        <img src="Images/IMG_1116.jpeg" class="img-about" />
+        <h1>About</h1>
+
+        <p>
+            Junior Economics student studying at Emmanuel College. Passion for finance, business, and management. Experienced in working in Sales and Learning + Development for management consulting. Research and design sales content for internal training purposes. Worked with documentation, learning management systems, and creating training plans
+        </p>
+
+    </div>
+</div>
+
+<script>
+    function openPage(pageName, elmnt, color) {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+
+        // Show the specific tab content
+        document.getElementById(pageName).style.display = "block";
+
+        // Add the specific color to the button used to open the tab content
+        elmnt.style.backgroundColor = color;
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+</script>
+
+</body>
+
+</html>
