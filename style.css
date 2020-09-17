@@ -1,57 +1,66 @@
 /* Set height of body and the document to 100% to enable "full page tabs" */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
 }
 
 /* Style tab links */
 .tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
 }
 
 .tablink:hover {
-  background-color: #777;
+    background-color: #777;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
 }
 
-#Home {background-color: red;}
-#News {background-color: green;}
-#Contact {background-color: blue;}
-#About {background-color: orange;}
+#Home {
+    background-color: aliceblue;
+}
 
+#News {
+    background-color: aliceblue;
+}
 
+#Blog {
+    background-color: aliceblue;
+}
+
+#About {
+    background-color: aliceblue;
+}
 
 body {
     margin: 0;
     padding: 0;
     background-color: aliceblue;
     background-size: cover;
-    background-image: url(https://www.linuxfoundation.org/wp-content/uploads/2016/12/lf_background_trees.jpg);
     background-repeat: no-repeat;
 }
 
 
 
-
 .box {
+    background-image: url(Images/cali.jpeg);
     width: full;
-    height: 880px;
+    height: auto;
     background: rgba(0, 0, 0, 0.4);
     padding: 100px;
     text-align: center;
@@ -61,16 +70,14 @@ body {
     font-family: 'Century Gothic', sans-serif;
 }
 
-
-
-
-
+/* main header image
 .box img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
 }
+*/
 
 .box h1 {
     font-size: 100px;
@@ -87,7 +94,7 @@ body {
 .box p {
     text-align: justify;
     text-align: center;
-    
+
 }
 
 ul {
@@ -152,7 +159,7 @@ ul {
 
 .about p {
     text-align: center;
-    
+
 }
 
 .blog li a:hover {
@@ -188,7 +195,7 @@ ul {
 
 .blog p {
     text-align: justify;
-    
+
 }
 
 .blog li a:hover {
