@@ -11,11 +11,10 @@
 
 <body>
 
-
-
-
     <div id="tablink">
 
+
+        <button class="tablink" onclick="openPage('Contact', this, 'grey')" id="defaultOpen">Contact</button>
         <button class="tablink" onclick="openPage('Resume', this, 'grey')" id="defaultOpen">Resume</button>
         <button class="tablink" onclick="openPage('Blog', this, 'grey')">Blog</button>
 
@@ -23,9 +22,34 @@
         <button class="tablink" onclick="openPage('Home', this, 'grey')">Home</button>
     </div>
 
+    <div id="Contact" class="tabcontent">
+        <div class="container">
+            <form action="action_page.php">
 
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                </select>
+
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+    </div>
     <div id="Home" class="tabcontent">
         <div class="box">
+
 
 
             <h1>Chenyi Keyser</h1>

@@ -17,6 +17,8 @@ html {
     padding: 14px 16px;
     font-size: 17px;
     width: 10%;
+
+
 }
 
 .tablink:hover {
@@ -32,45 +34,48 @@ html {
 }
 
 #Home {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 #News {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 #Blog {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 #About {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: aliceblue;
+    background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 
 
 
 .box {
+
     width: full;
-    height: auto;
+    height: full;
     background: rgba(0, 0, 0, 0.4);
     padding: 100px;
     text-align: center;
     margin: auto;
-    /*margin-top: 5%;*/
+    margin-top: 5%;
     color: white;
     font-family: 'Century Gothic', sans-serif;
     background-image: url(https://i.pinimg.com/originals/cc/77/12/cc7712dcb21a5dcadd57c804cc693bbf.jpg);
     background-position: bottom;
     object-fit: fill;
 }
+
 
 /* main header image*/
 .header img {
@@ -202,4 +207,39 @@ ul {
 
 .blog li a:hover {
     color: #b9b9b9;
+}
+
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
