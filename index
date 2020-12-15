@@ -5,14 +5,13 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/d1341f9b7a.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Chenyi Website</title>
+    <title>Chenyi Keyser</title>
 </head>
 
 
 <body>
 
     <div id="tablink">
-
 
         <button class="tablink" onclick="openPage('Contact', this, 'grey')" >Contact</button>
         <button class="tablink" onclick="openPage('Resume', this, 'grey')" >Resume</button>
@@ -22,6 +21,7 @@
     </div>
 
 
+    <!-- Tabs -->
     <div id="Home" class="tabcontent">
         <div class="box">
 
@@ -127,3 +127,8 @@
     </script>
 
 </body></html>
+
+
+
+
+
