@@ -9,6 +9,12 @@ html {
     color: #666;
 }
 
+#logo{
+	position:fixed;
+	top:0;
+	left:0;
+}
+
 .pimg1,
 .pimg2,
 .pimg3,
@@ -207,4 +213,3 @@ input[type=submit]:hover {
     border-radius: 50%;
 
 }
-
