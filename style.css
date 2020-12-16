@@ -108,7 +108,7 @@ html {
 .tabcontent {
     color: white;
     display: none;
-    padding: 100px 20px;
+
     height: 100%;
 }
 
@@ -183,3 +183,11 @@ input[type=submit]:hover {
   padding: 20px;
 }
 
+
+.section section-light img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
