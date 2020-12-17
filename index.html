@@ -14,21 +14,6 @@
 </head>
 
 <body>
-    <div id="logo">
-        <img src="favicon_io/android-chrome-192x192.png">
-    </div>
-
-    <div id="tablink">
-
-        <button class="tablink" onclick="openPage('Contact', this, 'grey')">Contact</button>
-        <button class="tablink" onclick="openPage('Resume', this, 'grey')">Resume</button>
-        <button class="tablink" onclick="openPage('Blog', this, 'grey')">Blog</button>
-        <button class="tablink" onclick="openPage('Home', this, 'grey')" id="defaultOpen">Home</button>
-    </div>
-
-
-    <!-- Tabs -->
-    <div id="Home" class="tabcontent">
 
         <div class="pimg4" title="Chenyi Dance">
             <div class="ptext">
@@ -92,53 +77,8 @@
 
 
 
-    </div>
 
 
-    <div id="Resume" class="tabcontent">
-        <h1>Resume</h1>
-        <iframe src="Resume.pdf" width="100%" height="500px">
-        </iframe>
-    </div>
-
-    <div id="Blog" class="tabcontent">
-
-        <div class="blog">
-
-            <h1>Blog</h1>
-            <h5 class="sub">Being Busy</h5>
-            <h5>
-                Humans love to be busy, well, most do these days. We live in a world where one can make money doing almost anything they set their mind too. Being busy is looked at as cool, important, someone who has their life together. The sad thing is that when a person is not busy, they are looked at as lesser and not equal. We correlate busyness with success. The hustle culture in the world today places a heavy emphasis on work and success. The calendar is filled with meetings and calls and no time for a personal life. We start to worship our neat and busy calendars. “I’m too busy to hang out” or “let me check my calendar”. This change in society seems to be recent within the last 10-15 years.
-            </h5>
-
-        </div>
-    </div>
-
-    <div id="Contact" class="tabcontent">
-        <div class="container">
-            <form action="action_page.php">
-
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-                <label for="country">Country</label>
-                <select id="country" name="country">
-                    <option value="australia">Australia</option>
-                    <option value="canada">Canada</option>
-                    <option value="usa">USA</option>
-                </select>
-
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-                <input type="submit" value="Submit">
-
-            </form>
-        </div>
-    </div>
     <script>
         function openPage(pageName, elmnt, color) {
             // Hide all elements with class="tabcontent" by default */
