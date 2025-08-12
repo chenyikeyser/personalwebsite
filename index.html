@@ -1,280 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/templatemo-style.css" />
-    <title>Chenyi Keyser</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Chenyi Keyser | Keyser Advisory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!--
-Mini Profile Template
-https://templatemo.com/tm-530-mini-profile
--->
-</head>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #64748b;
+            --accent: #8b5cf6;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+        }
 
-<body>
-    <!-- Welcome Section -->
-    <section id="tmWelcome" class="parallax-window" data-parallax="scroll" data-image-src="img/wedding.jpeg">
-        <div class="container-fluid tm-brand-container-outer">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Logo Area -->
-                    <!-- Black transparent bg -->
-                    <div class="ml-auto mr-0 tm-bg-black-transparent text-white tm-brand-container-inner">
-                        <div class="tm-brand-container text-center">
-                            <h1 class="tm-brand-name">Keyser Advisory</h1>
-                            <p class="tm-brand-description mb-0">Unlock Your Financial Potential with Keyser Advisory</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+        }
 
-        <div class="tm-bg-white-transparent tm-welcome-container">
-            <div class="container-fluid">
-                <div class="row h-100">
-                    <!-- Welcome Text -->
-                    <!-- White transparent bg -->
-                    <div class="col-md-7 tm-welcome-left-col">
-                        <div class="tm-welcome-left">
-                            <h2 class="tm-welcome-title">Chenyi Keyser</h2>
-                            <p class="pb-0">
-                                I have extensive experience managing complex accounting tasks, such as expense management, month-end accounting, and SaaS integration. My skills include a deep understanding of accounting principles, financial reporting, and financial analysis. I am proficient in using accounting software and have a proven track record of delivering accurate and timely financial information to c-suite. With my strong attention to detail, analytical skills, and ability to manage multiple tasks simultaneously, I am committed to ensuring the financial health and success of the organizations I work with.
-                        </div>
-                    </div>
-                    <!-- Brown bg -->
-                    <div class="col-md-5">
-                        <div class="tm-welcome-right">
-                            <i class="fas fa-4x fa-heart p-3 tm-welcome-icon"></i>
-                            <p class="mb-0">
-                                I love coffee, music, hiking, and cooking. My goal is to travel to all over Asia and Europe one day. My favorite movie is The Lord of the Rings.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Welcome section -->
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    <!-- Portfolio section -->
-    <section id="tmPortfolio">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-success">
-                            Assistant Financial Controller
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-success">
-                                The Vets
-                                <span class="tm-title-small">(2024 Oct - Present)</span>
-                            </h3>
-                            <p class="mb-0">
-                                I collaborate closely with the CEO and VP of Operations to refine financial reporting processes, ensuring data-driven insights inform strategic decisions. While leading a finance and accounting team of four—including the Controller, Accounting Manager, Senior Accountant, and Staff Accountant—I oversee financial strategy, operational decision support, and reporting frameworks. This role blends cross-functional partnership with team leadership, driving clarity in financial metrics and empowering executives to make informed, actionable choices..
-                            </p>
-                        </div>
-                    </div>
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-info">
-                            Assistant Financial Controller
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-info">
-                                BetterVet
-                                <span class="tm-title-small">(2024 Apr - 2024 Oct)</span>
-                            </h3>
-                            <p class="mb-0">
-                                I led a $10M debt treasury cycle, optimizing cash flow and forecasting accuracy while tightening audit controls—resulting in a 5% liquidity boost. Collaborating with the CEO and Board, I introduced G&A cost-cutting strategies and renegotiated contracts, slashing annual costs by $300K and improving EBITDA by 32%. Additionally, I analyzed key metrics (CAC, LTV, SEO, retention) with the VP of Operations, identifying opportunities to reduce monthly marketing spend by $400K—directly enhancing financial efficiency. Prior to this role, I implemented Oracle NetSuite ERP, cutting reporting time by 3 days while managing a team of 4 finance professionals. I also prepared and presented P&L, Balance Sheet, and Cash Flow reports to the CEO, board, and investors monthly, and streamlined payroll processing for 150+ employees (W2/1099) across multiple states using Rippling, ensuring compliance and operational efficiency.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-green">
-                            Senior Accountant
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-green">
-                                BetterVet
-                                <span class="tm-title-small">(2021 Nov to Apr 2024)</span>
-                            </h3>
-                            <p class="mb-0">
-                                I supported BetterVet’s first-ever external US GAAP financial audit, contributing to the successful clean opinion—a critical milestone for the company’s financial credibility. While managing day-to-day accounting in QuickBooks Online, I oversaw month-end closes, intercompany consolidations, payroll accruals, AP/AR, inventory tracking, and reconciliations, ensuring seamless financial operations. Simultaneously, I played a key role in the due diligence process for BetterVet’s $40M Series A funding, organizing critical documentation (like tax records and shareholder agreements) and aligning financials with investor requirements to support the company’s growth. This role blended technical accounting rigor with strategic impact, directly contributing to BetterVet’s ability to scale and secure funding.
-                            </p>
-                        </div>
-                    </div>
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-orange">
-                            Associate Product Manager
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-orange">
-                                Okiest Dokiest
-                                <span class="tm-title-small">(2021 May to Dec 2021)</span>
-                            </h3>
-                            <p class="mb-0">
-                                I assisted in managing a new startup’s marketing efforts, developing creative digital advertising campaigns across Instagram, TikTok, Facebook, and Pinterest to boost engagement and reach. I also played a key role in spearheading the company’s rebranding initiative, aligning visual identity and messaging to strengthen brand presence. Additionally, I streamlined accounting processes through general bookkeeping, optimizing financial workflows to enhance productivity and operational efficiency.
-                            </p>
-                        </div>
-                    </div>
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
 
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-blue">
-                            Consulting Coordinator
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-blue">
-                                The Spur Group
-                                <span class="tm-title-small">(2020 July to 2020 Sep)</span>
-                            </h3>
-                            <p class="mb-0">
-                                I collaborated closely with the Learning Development team and sales department to design and implement a new training program for consultants, aligning directly with the VP of Sales’ objectives. By bridging the gap between team needs and sales priorities, I helped consultants build the skills to excel in their roles while fostering stronger alignment between departments. The result? Enhanced performance, streamlined processes, and a smoother path to sales success—a true win-win for everyone involved.
-                            </p>
-                        </div>
-                    </div>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
 
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-dark-gray">
-                            Project Manager
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-dark-gray">
-                                Academic Technology & Innovation Group
-                                <span class="tm-title-small">
-                                    (2019 Sep to 2022 Dec)
-                                </span>
-                            </h3>
-                            <p class="mb-0">
-                                I led the charge in helping faculty upgrade their teaching tools by training them on new instructional software—think making lectures more interactive and curriculum delivery smoother. Plus, I kept the college’s learning management system running like a well-oiled machine, making sure all the digital tools were in place for students and staff. On top of that, I ran the makerspace, where I got to play with cool tech and collaborate with faculty to bring hands-on learning into classrooms and research projects. It was all about bridging the gap between tech and teaching, and I loved every minute of it!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End portfolio section -->
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    <!-- Contact section -->
-    <div id="tmContact" class="parallax-window" data-parallax="scroll" data-image-src="img/image1.jpg">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tm-contact-items-container">
-                        <div class="tm-contact-item">
-                            <i class="fas fa-5x fa-school tm-contact-item-icon"></i>
-                            <p class="mb-0">
-                                Emmanuel College, Boston MA
-                            </p>
-                            <p>
-                                B.A Economics and Finance Minor
-                            </p>
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-                        </div>
-                        <div class="tm-contact-item">
-                            <i class="fas fa-5x fa-building tm-contact-item-icon"></i>
-                            <p class="mb-0">
-                                North Seattle College, Seattle WA
-                            </p>
-                            <p>
-                                Associates of General Science
-                            </p>
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-                        </div>
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
 
-                        <div class="tm-contact-item">
-                            <i class="fas fa-5x fa-handshake tm-contact-item-icon"></i>
-                            <p class="mb-0">
-                                HOPE Worldwide
-                            </p>
-                            <p>
-                                Volunteer
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-            <!--
-            <div class="container">
-                <embed src="Resume%20V1.pdf#toolbar=0&scrollbar=0&view=fit" type="application/pdf" width="100%" height="700px" />
-            </div>
-            -->
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-            <div class="row">
-                <div class="col-12">
-                    <!-- <form action="index.html" method="POST" id="tmContactForm" class="tm-bg-white-transparent">
-                        <div class="form-group">
-                            <input type="text" id="contact_name" name="contact_name" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Name" required />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="contact_email" name="contact_email" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Email" required />
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="4" id="contact_message" name="contact_message" class="form-control rounded-0 border-top-0 border-right-0 border-left-0" placeholder="Message" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn tm-btn-submit rounded-0 text-white">
-                                Submit
-                            </button>
-                        </div>
-                    </form> -->
-                </div>
-            </div>
-            <!-- row -->
-            <div class="row">
-                <footer class="col-12">
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-                </footer>
-            </div>
-        </div>
-        <!-- container -->
-    </div>
-    <!-- section -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/parallax.min.js"></script>
-    <script>
-        function detectMsBrowser() {
-            using_ms_browser =
-                navigator.appName == "Microsoft Internet Explorer" ||
-                (navigator.appName == "Netscape" &&
-                    navigator.appVersion.indexOf("Edge") > -1) ||
-                (navigator.appName == "Netscape" &&
-                    navigator.appVersion.indexOf("Trident") > -1);
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
 
-            if (using_ms_browser == true) {
-                alert(
-                    "Please use Chrome or Firefox for the best browsing experience!"
-                );
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .job-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .job-achievements {
+            list-style: none;
+        }
+
+        .job-achievements li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .job-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container {
+                padding: 0 1rem;
             }
         }
 
-        function setBrandMarginTop() {
-            var bottomContainerHeight = $(".tm-welcome-container").height();
-
-            $(".tm-brand-container-outer").css({
-                "margin-top": -bottomContainerHeight + "px"
-            });
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
-        $(function() {
-            setBrandMarginTop();
-            detectMsBrowser();
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="logo">Keyser Advisory</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            // Handle window resize event
-            $(window).resize(function() {
-                setBrandMarginTop();
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Christopher Chenyi Keyser</h1>
+                    <div class="subtitle">Finance Professional & Strategic Advisor</div>
+                    <div class="tagline">
+                        I translate numbers into strategic action, transforming financial data into meaningful business insights that drive growth and efficiency.
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="#experience" class="btn btn-primary">View Experience</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">$20M</div>
+                            <div class="stat-label">Fundraising Due Diligence</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Clean</div>
+                            <div class="stat-label">External Audit Opinion</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">NetSuite</div>
+                            <div class="stat-label">ERP Implementation</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Full-Stack</div>
+                            <div class="stat-label">Financial Management</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">
+                    My journey from accounting to financial leadership has taught me to see beyond spreadsheets to real business impact. I thrive on partnering with leadership teams to drive growth and efficiency while maintaining financial discipline in dynamic environments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Building financial excellence across high-growth companies</p>
+            </div>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item fade-in">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">FP&A Manager</div>
+                                <div class="company">The Vets | Vet-Med</div>
+                            </div>
+                            <div class="job-period">Oct 2024 – Present</div>
+                        </div>
+                        <ul class="job-achievements">
+                            <li>Build dynamic financial models that integrate revenue forecasting, capacity planning, and operational KPIs to inform strategic decisions</li>
+                            <li>Deliver weekly and monthly reporting that distills financial and operational drivers into actionable insights for regional operations leads</li>
+                            <li>Guide revenue growth strategy by identifying trends in appointment mix, labor utilization, and seasonal demand</li>
+                            <li>Produced monthly and quarterly board-ready financial packages, including full financial statements, budget vs. actual variance, and operational KPIs</li>
+                            <li>Maintained a 13-week rolling cash flow model used for debt covenant compliance, strategic acquisition timing, and cash preservation planning</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Assistant Controller</div>
+                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                            </div>
+                            <div class="job-period">Apr 2024 - Oct 2024</div>
+                        </div>
+                        <ul class="job-achievements">
+                            <li>Managed a $10M debt treasury cycle, improving liquidity by 5% through proactive cash flow optimization</li>
+                            <li>Fixed G&A inefficiencies that saved us $300K annually and boosted our EBITDA by 32% through contract negotiation</li>
+                            <li>Partnered with the VP of Operations to analyze marketing data, reducing $400K in monthly spend without compromising topline growth or volume</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Senior Accountant</div>
+                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                            </div>
+                            <div class="job-period">Dec 2022 - Apr 2024</div>
+                        </div>
+                        <ul class="job-achievements">
+                            <li>Led our Oracle NetSuite ERP implementation, reducing our month end close time by three days</li>
+                            <li>Managed the complexity of multi-state payroll for over 150 team members (both W2 and 1099) using Rippling</li>
+                            <li>Supported the company through its first external US GAAP audit, resulting in a clean opinion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Staff Accountant</div>
+                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                            </div>
+                            <div class="job-period">Nov 2021 - Dec 2022</div>
+                        </div>
+                        <ul class="job-achievements">
+                            <li>Managed the month end close process including financial statement preparation (P&L, Balance Sheet, Cash Flow), journal entries, accruals, intercompany transactions, and multi entity consolidations in QuickBooks Online</li>
+                            <li>Supported financial due diligence for the $20M Series A raise led by Alta Partners</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Intern, Sales and Learning & Development</div>
+                                <div class="company">Spur Reply | Management Consulting</div>
+                            </div>
+                            <div class="job-period">Jul 2020 – Sep 2020</div>
+                        </div>
+                        <ul class="job-achievements">
+                            <li>Turned consultant performance data into meaningful PowerBI visualizations that helped shape our sales strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Core Skills</h2>
+                <p class="section-subtitle">Technical expertise and financial acumen for modern businesses</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>📊 Financial Expertise</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Month-end Close</span>
+                        <span class="skill-tag">US GAAP</span>
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">Cash Flow Forecasting</span>
+                        <span class="skill-tag">KPI Development</span>
+                        <span class="skill-tag">Cost Optimization</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>💻 Systems & Technology</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">QuickBooks</span>
+                        <span class="skill-tag">NetSuite</span>
+                        <span class="skill-tag">PowerBI</span>
+                        <span class="skill-tag">Advanced Excel</span>
+                        <span class="skill-tag">Rippling</span>
+                        <span class="skill-tag">Bill.com</span>
+                        <span class="skill-tag">Carta</span>
+                        <span class="skill-tag">Cash Pro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to discuss how financial strategy can drive your business forward</p>
+            </div>
+            
+            <div class="contact-content fade-in">
+                <div class="contact-info">
+                    <a href="mailto:chenyi.keyser@gmail.com" class="contact-item">
+                        📧 chenyi.keyser@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/chenyikeyser/" class="contact-item" target="_blank">
+                        💼 LinkedIn Profile
+                    </a>
+                    <div class="contact-item">
+                        📍 Boston, MA
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Christopher Chenyi Keyser | Keyser Advisory. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects to stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+
+        // Typing effect for hero title (optional enhancement)
+        function typeWriter(element, text, delay = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, delay);
+                }
+            }
+            typing();
+        }
+
+        // Initialize typing effect on page load
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero-text h1');
+            const originalText = heroTitle.textContent;
+            typeWriter(heroTitle, originalText, 80);
         });
     </script>
 </body>
-
 </html>
