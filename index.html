@@ -201,42 +201,173 @@
 
         .hero-visual {
             position: relative;
+            display: flex;
+            justify-content: center;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
+        /* Quote Rotator */
+        .quote-rotator {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 3rem 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+            color: white;
             text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
+            max-width: 500px;
+            width: 100%;
         }
 
-        .stat-card:hover {
-            transform: translateY(-10px);
+        .quote-container {
+            position: relative;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        .quote-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
         }
 
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
+        .quote-author {
+            font-size: 0.95rem;
+            opacity: 0.9;
             font-weight: 500;
         }
 
-        /* Section Styling */
+        /* Quote fade animation */
+        .quote-fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.5s ease;
+        }
+
+        .quote-fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        /* Philosophy Section */
+        .philosophy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .philosophy-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 0 0 10px 10px;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .philosophy-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .philosophy-statement {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 2px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .philosophy-statement blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .philosophy-statement blockquote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent);
+            position: absolute;
+            top: -1rem;
+            left: -0.5rem;
+            opacity: 0.3;
+        }
+
+        .philosophy-details {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .philosophy-details p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .philosophy-details strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
         section {
             padding: 5rem 0;
         }
@@ -260,107 +391,125 @@
             margin: 0 auto;
         }
 
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            max-width: 800px;
+        /* Story-Driven Experience Section */
+        .story-timeline {
+            max-width: 900px;
             margin: 0 auto;
-        }
-
-        .timeline-item {
             position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--primary);
+        .story-item {
+            margin-bottom: 4rem;
+            position: relative;
         }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 12px;
-            width: 2px;
-            height: calc(100% + 1rem);
-            background: var(--border);
-        }
-
-        .timeline-item:last-child::after {
-            display: none;
-        }
-
-        .job-card {
+        .story-card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--border);
-            margin-left: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .job-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
         }
 
-        .job-header {
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .job-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
+        .story-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .company {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .job-period {
-            color: var(--text-light);
+        .story-period {
             font-size: 0.9rem;
+            color: var(--text-light);
             font-weight: 500;
             background: var(--bg-light);
             padding: 0.5rem 1rem;
             border-radius: 20px;
+            display: inline-block;
         }
 
-        .job-achievements {
-            list-style: none;
-        }
-
-        .job-achievements li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text);
-        }
-
-        .job-achievements li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
+        .story-role {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: var(--primary);
-            font-weight: bold;
+        }
+
+        .company-badge {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .story-content {
+            line-height: 1.7;
+        }
+
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .story-narrative {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .story-highlights {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-item strong {
+            color: var(--primary);
+            font-weight: 700;
         }
 
         /* Skills Section */
@@ -472,13 +621,34 @@
                 font-size: 2.5rem;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .hero-visual {
+                justify-content: center;
             }
 
-            .job-header {
+            .quote-rotator {
+                padding: 2.5rem 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+
+            .story-header {
                 flex-direction: column;
-                gap: 0.5rem;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .story-card {
+                padding: 2rem;
+            }
+
+            .story-title {
+                font-size: 1.3rem;
+            }
+
+            .story-narrative {
+                font-size: 1rem;
             }
 
             .contact-info {
@@ -535,22 +705,13 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">$20M</div>
-                            <div class="stat-label">Fundraising Due Diligence</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">Clean</div>
-                            <div class="stat-label">External Audit Opinion</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">NetSuite</div>
-                            <div class="stat-label">ERP Implementation</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">Full-Stack</div>
-                            <div class="stat-label">Financial Management</div>
+                    <!-- Quote Rotator -->
+                    <div class="quote-rotator">
+                        <div class="quote-container">
+                            <div class="quote-text" id="rotatingQuote">
+                                "Numbers tell stories, I help you listen"
+                            </div>
+                            <div class="quote-author">— Christopher Keyser</div>
                         </div>
                     </div>
                 </div>
@@ -562,10 +723,41 @@
     <section id="about">
         <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">
-                    My journey from accounting to financial leadership has taught me to see beyond spreadsheets to real business impact. I thrive on partnering with leadership teams to drive growth and efficiency while maintaining financial discipline in dynamic environments.
-                </p>
+                <h2 class="section-title">My Philosophy</h2>
+                <p class="section-subtitle">How I approach finance to drive real business value</p>
+            </div>
+            
+            <div class="philosophy-content fade-in">
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">🎯</div>
+                        <h3>Keep It Simple</h3>
+                        <p>Finance should be accessible, not intimidating. I believe in stripping away unnecessary complexity to focus on what truly matters—clear insights that drive decisions.</p>
+                    </div>
+                    
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">🤝</div>
+                        <h3>Support Operations</h3>
+                        <p>Finance exists to empower the business, not constrain it. I work closely with operators to provide the KPIs and insights they need to drive revenue and growth.</p>
+                    </div>
+                    
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">⚡</div>
+                        <h3>Right Tool, Right Job</h3>
+                        <p>Accounting financials should stay financial—clean, compliant, and clear. When operations need strategic insights, that's where FP&A steps in with purpose-built analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="philosophy-statement">
+                    <blockquote>
+                        "I've learned that the best finance teams don't just report what happened—they illuminate what's possible. My role isn't to complicate the numbers; it's to make them work harder for the business."
+                    </blockquote>
+                    <div class="philosophy-details">
+                        <p>This philosophy has guided my work from startup to scale-up environments. Whether I'm implementing a new ERP system, optimizing cash flow, or building financial models, I always ask: <strong>Does this make the business more effective?</strong> If the answer isn't a clear yes, we're overcomplicating things.</p>
+                        
+                        <p>Great finance isn't about showing how smart you are with complex models—it's about making everyone else smarter with clear, actionable insights.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -574,92 +766,147 @@
     <section id="experience">
         <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">Building financial excellence across high-growth companies</p>
+                <h2 class="section-title">My Professional Journey</h2>
+                <p class="section-subtitle">Stories of growth, challenges overcome, and value delivered</p>
             </div>
             
-            <div class="experience-timeline">
-                <div class="timeline-item fade-in">
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div>
-                                <div class="job-title">FP&A Manager</div>
-                                <div class="company">The Vets | Vet-Med</div>
+            <div class="story-timeline">
+                <div class="story-item fade-in">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-meta">
+                                <span class="story-period">Oct 2024 – Present</span>
+                                <span class="story-role">FP&A Manager</span>
                             </div>
-                            <div class="job-period">Oct 2024 – Present</div>
+                            <div class="company-badge">The Vets</div>
                         </div>
-                        <ul class="job-achievements">
-                            <li>Build dynamic financial models that integrate revenue forecasting, capacity planning, and operational KPIs to inform strategic decisions</li>
-                            <li>Deliver weekly and monthly reporting that distills financial and operational drivers into actionable insights for regional operations leads</li>
-                            <li>Guide revenue growth strategy by identifying trends in appointment mix, labor utilization, and seasonal demand</li>
-                            <li>Produced monthly and quarterly board-ready financial packages, including full financial statements, budget vs. actual variance, and operational KPIs</li>
-                            <li>Maintained a 13-week rolling cash flow model used for debt covenant compliance, strategic acquisition timing, and cash preservation planning</li>
-                        </ul>
+                        <div class="story-content">
+                            <h3 class="story-title">Building Financial Intelligence for Scaling Veterinary Care</h3>
+                            <p class="story-narrative">
+                                When The Vets brought me on as FP&A Manager, they were experiencing rapid growth but needed better financial visibility to make strategic decisions. I stepped in to build the financial infrastructure that would support their expansion while maintaining operational excellence.
+                            </p>
+                            <p class="story-narrative">
+                                I created dynamic financial models that don't just track numbers—they tell the story of the business. By integrating revenue forecasting with capacity planning and operational KPIs, leadership now has real-time insights into what's driving growth and where opportunities lie.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Built:</strong> Comprehensive financial reporting that transforms complex data into actionable insights for regional operations
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Delivered:</strong> Board-ready financial packages and 13-week rolling cash flow models for strategic planning
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div>
-                                <div class="job-title">Assistant Controller</div>
-                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                <div class="story-item fade-in">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-meta">
+                                <span class="story-period">Apr 2024 - Oct 2024</span>
+                                <span class="story-role">Assistant Controller</span>
                             </div>
-                            <div class="job-period">Apr 2024 - Oct 2024</div>
+                            <div class="company-badge">BetterVet</div>
                         </div>
-                        <ul class="job-achievements">
-                            <li>Managed a $10M debt treasury cycle, improving liquidity by 5% through proactive cash flow optimization</li>
-                            <li>Fixed G&A inefficiencies that saved us $300K annually and boosted our EBITDA by 32% through contract negotiation</li>
-                            <li>Partnered with the VP of Operations to analyze marketing data, reducing $400K in monthly spend without compromising topline growth or volume</li>
-                        </ul>
+                        <div class="story-content">
+                            <h3 class="story-title">Turning Financial Discipline into Growth Catalyst</h3>
+                            <p class="story-narrative">
+                                BetterVet was at a critical juncture—managing $10M in debt while scaling operations. As Assistant Controller, I became the bridge between financial stewardship and aggressive growth goals. The challenge wasn't just managing money; it was optimizing every dollar to fuel expansion.
+                            </p>
+                            <p class="story-narrative">
+                                Through surgical precision in G&A optimization and deep partnership with operations, I helped transform BetterVet's financial profile. We didn't just cut costs—we strategically reallocated resources to drive a 32% EBITDA improvement while maintaining growth momentum.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Impact:</strong> $300K annual savings through strategic contract negotiation and process optimization
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Result:</strong> Reduced $400K monthly marketing spend without compromising growth trajectory
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div>
-                                <div class="job-title">Senior Accountant</div>
-                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                <div class="story-item fade-in">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-meta">
+                                <span class="story-period">Dec 2022 - Apr 2024</span>
+                                <span class="story-role">Senior Accountant</span>
                             </div>
-                            <div class="job-period">Dec 2022 - Apr 2024</div>
+                            <div class="company-badge">BetterVet</div>
                         </div>
-                        <ul class="job-achievements">
-                            <li>Led our Oracle NetSuite ERP implementation, reducing our month end close time by three days</li>
-                            <li>Managed the complexity of multi-state payroll for over 150 team members (both W2 and 1099) using Rippling</li>
-                            <li>Supported the company through its first external US GAAP audit, resulting in a clean opinion</li>
-                        </ul>
+                        <div class="story-content">
+                            <h3 class="story-title">Building Systems for Scale</h3>
+                            <p class="story-narrative">
+                                As BetterVet grew from startup to scale-up, our financial systems needed to evolve rapidly. I led the charge on implementing Oracle NetSuite, transforming how we managed our financial operations across multiple states and employment types.
+                            </p>
+                            <p class="story-narrative">
+                                The real test came during our first external audit. Working with 150+ team members across W2 and 1099 classifications, complex multi-state payroll, and rapid growth, we needed bulletproof processes. The result? A clean audit opinion that validated our financial integrity.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Achievement:</strong> Reduced month-end close time by 3 days through ERP implementation
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Milestone:</strong> Successfully navigated first external US GAAP audit with clean opinion
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div>
-                                <div class="job-title">Staff Accountant</div>
-                                <div class="company">BetterVet | Vet-Tech Startup</div>
+                <div class="story-item fade-in">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-meta">
+                                <span class="story-period">Nov 2021 - Dec 2022</span>
+                                <span class="story-role">Staff Accountant</span>
                             </div>
-                            <div class="job-period">Nov 2021 - Dec 2022</div>
+                            <div class="company-badge">BetterVet</div>
                         </div>
-                        <ul class="job-achievements">
-                            <li>Managed the month end close process including financial statement preparation (P&L, Balance Sheet, Cash Flow), journal entries, accruals, intercompany transactions, and multi entity consolidations in QuickBooks Online</li>
-                            <li>Supported financial due diligence for the $20M Series A raise led by Alta Partners</li>
-                        </ul>
+                        <div class="story-content">
+                            <h3 class="story-title">Foundation Building in High-Growth Environment</h3>
+                            <p class="story-narrative">
+                                Joining BetterVet as Staff Accountant meant stepping into the exciting chaos of a fast-growing startup. With month-end closes, financial statement preparation, and the pressure of an upcoming Series A, every detail mattered.
+                            </p>
+                            <p class="story-narrative">
+                                When Alta Partners led our $40M Series A raise, I was right in the thick of due diligence, ensuring our financial house was in perfect order. It was my first taste of how solid accounting fundamentals become the bedrock for major business milestones.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Responsibility:</strong> Complete financial statement preparation and multi-entity consolidations
+                                </div>
+                                <div class="highlight-item">
+                                    <strong>Success:</strong> Supported $40M Series A fundraising through meticulous due diligence preparation
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div>
-                                <div class="job-title">Intern, Sales and Learning & Development</div>
-                                <div class="company">Spur Reply | Management Consulting</div>
+                <div class="story-item fade-in">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="story-meta">
+                                <span class="story-period">Jul 2020 – Sep 2020</span>
+                                <span class="story-role">Intern</span>
                             </div>
-                            <div class="job-period">Jul 2020 – Sep 2020</div>
+                            <div class="company-badge">Spur Reply</div>
                         </div>
-                        <ul class="job-achievements">
-                            <li>Turned consultant performance data into meaningful PowerBI visualizations that helped shape our sales strategy</li>
-                        </ul>
+                        <div class="story-content">
+                            <h3 class="story-title">Where Data Visualization Met Strategy</h3>
+                            <p class="story-narrative">
+                                My journey in professional finance started at Spur Reply, where I discovered the power of turning raw consultant performance data into compelling PowerBI visualizations. This internship taught me that numbers without story are just spreadsheets—but numbers with narrative drive decisions.
+                            </p>
+                            <div class="story-highlights">
+                                <div class="highlight-item">
+                                    <strong>Learning:</strong> Transformed complex data into strategic insights that shaped sales strategy
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -779,16 +1026,38 @@
             observer.observe(el);
         });
 
-        // Add some interactive hover effects to stat cards
-        document.querySelectorAll('.stat-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
+        // Quote rotation functionality
+        const quotes = [
+            "Numbers tell stories, I help you listen",
+            "From spreadsheets to strategy",
+            "Making finance approachable, one model at a time",
+            "Turning complexity into clarity",
+            "Data-driven decisions, human-centered results"
+        ];
+
+        let currentQuoteIndex = 0;
+        const quoteElement = document.getElementById('rotatingQuote');
+
+        function rotateQuote() {
+            quoteElement.classList.add('quote-fade-out');
             
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(-10px) scale(1)';
-            });
-        });
+            setTimeout(() => {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                quoteElement.textContent = quotes[currentQuoteIndex];
+                quoteElement.classList.remove('quote-fade-out');
+                quoteElement.classList.add('quote-fade-in');
+                
+                setTimeout(() => {
+                    quoteElement.classList.remove('quote-fade-in');
+                }, 500);
+            }, 500);
+        }
+
+        // Start quote rotation after page load
+        let quoteInterval;
+        function startQuoteRotation() {
+            quoteInterval = setInterval(rotateQuote, 3500);
+        }
 
         // Typing effect for hero title (optional enhancement)
         function typeWriter(element, text, delay = 100) {
@@ -804,11 +1073,16 @@
             typing();
         }
 
-        // Initialize typing effect on page load
+        // Initialize typing effect and start quote rotation on page load
         window.addEventListener('load', () => {
             const heroTitle = document.querySelector('.hero-text h1');
             const originalText = heroTitle.textContent;
             typeWriter(heroTitle, originalText, 80);
+            
+            // Start quote rotation after a delay
+            setTimeout(() => {
+                startQuoteRotation();
+            }, 2000);
         });
     </script>
 </body>
