@@ -2,1088 +2,627 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christopher Chenyi Keyser | Keyser Advisory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LifeStack OS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* --- THEME: SOFT SAAS --- */
+            --bg-body: #f3f5f8;       
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+            --text-main: #111827;     
+            --text-muted: #6b7280;    
+            --accent: #3b82f6;        
+            --accent-soft: #eff6ff;
+            --success: #10b981;
+            --success-soft: #d1fae5;
+            --border: #e5e7eb;
+            --radius-lg: 20px;        
+            --radius-sm: 12px;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #64748b;
-            --accent: #8b5cf6;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --bg: #ffffff;
-            --bg-light: #f8fafc;
-            --border: #e2e8f0;
-        }
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-text .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Quote Rotator */
-        .quote-rotator {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            padding: 3rem 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
-            color: white;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .quote-container {
-            position: relative;
-        }
-
-        .quote-text {
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            min-height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
-        }
-
-        .quote-author {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Quote fade animation */
-        .quote-fade-out {
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.5s ease;
-        }
-
-        .quote-fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.5s ease;
-        }
-
-        /* Philosophy Section */
-        .philosophy-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .philosophy-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 0 0 10px 10px;
-        }
-
-        .philosophy-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .philosophy-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .philosophy-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .philosophy-card p {
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 1.05rem;
-        }
-
-        .philosophy-statement {
-            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
-            padding: 3rem;
-            border-radius: 25px;
-            border: 2px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-statement::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .philosophy-statement blockquote {
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            line-height: 1.5;
-            position: relative;
-        }
-
-        .philosophy-statement blockquote::before {
-            content: '"';
-            font-size: 4rem;
-            color: var(--accent);
-            position: absolute;
-            top: -1rem;
-            left: -0.5rem;
-            opacity: 0.3;
-        }
-
-        .philosophy-details {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .philosophy-details p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--text);
-        }
-
-        .philosophy-details strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Story-Driven Experience Section */
-        .story-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .story-item {
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .story-card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .story-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-        }
-
-        .story-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .story-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .story-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .story-period {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 500;
-            background: var(--bg-light);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .story-role {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .company-badge {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .story-content {
-            line-height: 1.7;
-        }
-
-        .story-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-
-        .story-narrative {
-            font-size: 1.05rem;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .story-highlights {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-            margin-top: 2rem;
-        }
-
-        .highlight-item {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .highlight-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-item strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: var(--bg-light);
-            color: var(--text);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--bg-light);
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item:hover {
-            color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0; padding: 0; height: 100vh; overflow: hidden; 
+        }
+
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- LAYOUT --- */
+        .app-layout { display: grid; grid-template-columns: 260px 1fr; height: 100vh; }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px;
+            display: flex; flex-direction: column; justify-content: space-between; z-index: 50;
+        }
+        .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; margin-bottom: 40px; color: var(--text-main); cursor: pointer; }
+        .logo span { color: var(--accent); }
+        .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+        .nav-item {
+            padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 14px;
+            color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px;
+        }
+        .nav-item:hover { background: var(--bg-body); color: var(--text-main); }
+        .nav-item.active { background: var(--accent-soft); color: var(--accent); }
+        .user-widget {
+            background: var(--bg-body); padding: 12px; border-radius: var(--radius-sm);
+            display: flex; gap: 10px; align-items: center; border: 1px solid transparent;
+        }
+        .avatar { width: 32px; height: 32px; background: #e5e7eb; color: var(--text-muted); border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 700; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { padding: 40px; overflow-y: auto; position: relative; }
+        .content-width { max-width: 900px; margin: 0 auto; } /* Narrower for focus */
+        .header-area { margin-bottom: 40px; }
+        .page-title { font-size: 32px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -1px; }
+        .page-subtitle { color: var(--text-muted); font-size: 16px; }
+
+        /* --- NEW ROADMAP LAYOUT (STACKED) --- */
+        .phase-section { margin-bottom: 50px; }
+        .phase-header { 
+            display: flex; align-items: center; gap: 12px; margin-bottom: 20px; 
+            font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;
+        }
+        .phase-line { height: 1px; flex-grow: 1; background: var(--border); }
+        
+        .task-row {
+            display: flex; align-items: center; gap: 20px;
+            background: var(--bg-card); padding: 20px; border: 1px solid var(--border);
+            border-radius: var(--radius-sm); margin-bottom: 12px;
+            transition: all 0.2s; cursor: pointer; position: relative;
+        }
+        .task-row:hover { transform: translateX(4px); border-color: var(--accent); box-shadow: var(--shadow); }
+        .task-row.done { opacity: 0.6; background: #fafafa; }
+        .task-row.done .task-title { text-decoration: line-through; }
+
+        .row-icon { 
+            width: 40px; height: 40px; background: var(--bg-body); border-radius: 10px; 
+            display: grid; place-items: center; font-size: 18px; flex-shrink: 0; 
+        }
+        .row-content { flex-grow: 1; }
+        .task-title { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; }
+        .task-desc { font-size: 13px; color: var(--text-muted); }
+        
+        /* --- BENTO GRIDS (For Toolkit/Milestones) --- */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+        .card {
+            background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
+            border: 1px solid var(--border); box-shadow: var(--shadow); transition: all 0.2s ease;
+            position: relative; overflow: hidden; cursor: default;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: #d1d5db; }
+        .card h3 { margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-main); }
+        .card p { margin: 0; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+        .card-icon { width: 44px; height: 44px; background: var(--bg-body); color: var(--text-main); border-radius: 12px; display: grid; place-items: center; font-size: 20px; margin-bottom: 20px; }
+        .btn-action { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 700; color: var(--accent); text-decoration: none; cursor: pointer; }
+
+        /* --- ACTION DRAWER --- */
+        .drawer-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.2); backdrop-filter: blur(2px); z-index: 99;
+            opacity: 0; pointer-events: none; transition: 0.3s ease;
+        }
+        .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+        .drawer {
+            position: fixed; top: 0; right: 0; width: 500px; height: 100%;
+            background: white; z-index: 100;
+            transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.1); display: flex; flex-direction: column;
+        }
+        .drawer.open { transform: translateX(0); }
+        .drawer-header { padding: 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: start; }
+        .drawer-close { background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; font-size: 18px; }
+        .drawer-content { padding: 32px; overflow-y: auto; flex-grow: 1; }
+        .drawer-footer { padding: 24px 32px; border-top: 1px solid var(--border); background: #f9fafb; display: flex; justify-content: space-between; align-items: center; }
+        
+        .checklist-item {
+            display: flex; gap: 12px; align-items: start; padding: 16px;
+            border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;
+            cursor: pointer; transition: 0.2s; background: white;
+        }
+        .checklist-item:hover { border-color: var(--accent); background: var(--accent-soft); }
+        .checklist-item input { margin-top: 4px; cursor: pointer; width: 18px; height: 18px; accent-color: var(--accent); }
+
+        /* --- AUDIT --- */
+        .audit-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); text-align: center; }
+        .choice-btn { flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .choice-btn:hover { background: var(--bg-body); }
+        .choice-btn.selected { background: var(--text-main); color: white; border-color: var(--text-main); }
+
+        /* --- ABOUT --- */
+        .bio-hero { display: flex; gap: 30px; align-items: start; margin-bottom: 40px; background: white; padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+        .bio-avatar { width: 80px; height: 80px; background: var(--text-main); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 24px; font-weight: 800; flex-shrink: 0; }
+        
+        .timeline-item {
+            border-left: 2px solid var(--border); padding-left: 24px; margin-bottom: 30px; position: relative;
+        }
+        .timeline-item::before {
+            content: ""; width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+            position: absolute; left: -7px; top: 5px; border: 2px solid white;
+        }
+        .timeline-date { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .timeline-title { font-size: 16px; font-weight: 800; color: var(--text-main); }
+        .timeline-role { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+        .timeline-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+        /* --- LANDING --- */
+        .landing-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-body); z-index: 999;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        .hero-box { max-width: 500px; padding: 40px; }
+        .big-btn {
+            background: var(--text-main); color: white; border: none; padding: 18px 36px; border-radius: 100px;
+            font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow-float); transition: 0.2s; margin-top: 30px;
+        }
+        .big-btn:hover { transform: scale(1.05); }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .app-layout { grid-template-columns: 1fr; grid-template-rows: 1fr 80px; }
+            .sidebar { 
+                flex-direction: row; position: fixed; bottom: 0; left: 0; width: 100%; height: 80px;
+                padding: 10px 20px; z-index: 90; border-top: 1px solid var(--border); border-right: none;
+                box-shadow: 0 -10px 30px rgba(0,0,0,0.05); justify-content: space-between;
             }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-visual {
-                justify-content: center;
-            }
-
-            .quote-rotator {
-                padding: 2.5rem 2rem;
-            }
-
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            .story-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
-
-            .story-card {
-                padding: 2rem;
-            }
-
-            .story-title {
-                font-size: 1.3rem;
-            }
-
-            .story-narrative {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .logo, .user-widget { display: none; } 
+            .nav-menu { flex-direction: row; width: 100%; justify-content: space-between; }
+            .nav-item { flex-direction: column; font-size: 10px; gap: 4px; padding: 8px; background: transparent !important; color: var(--text-muted); }
+            .nav-item.active { color: var(--accent); }
+            .main-content { padding: 20px; padding-bottom: 100px; }
+            .drawer { width: 100%; }
+            .bio-hero { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-content">
-            <div class="logo">Keyser Advisory</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+    <div id="landing-page" class="landing-overlay">
+        <div class="hero-box">
+            <div style="font-size: 64px; margin-bottom: 20px;">⚡️</div>
+            <h1 style="font-size: 48px; font-weight: 800; letter-spacing: -2px; margin: 0; line-height: 1; color: var(--text-main);">LifeStack.</h1>
+            <p style="font-size: 18px; color: var(--text-muted); margin-top: 15px; line-height: 1.6;">
+                The financial operating system for high achievers.
+                <br>No fees. No jargon. Pure execution.
+            </p>
+            <button class="big-btn" onclick="enterApp()">Initialize System</button>
+            <p style="margin-top: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700;">100% Free • Private • Local</p>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Christopher Chenyi Keyser</h1>
-                    <div class="subtitle">Finance Professional & Strategic Advisor</div>
-                    <div class="tagline">
-                        I translate numbers into strategic action, transforming financial data into meaningful business insights that drive growth and efficiency.
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="#experience" class="btn btn-primary">View Experience</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <!-- Quote Rotator -->
-                    <div class="quote-rotator">
-                        <div class="quote-container">
-                            <div class="quote-text" id="rotatingQuote">
-                                "Numbers tell stories, I help you listen"
-                            </div>
-                            <div class="quote-author">— Christopher Keyser</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">My Philosophy</h2>
-                <p class="section-subtitle">How I approach finance to drive real business value</p>
-            </div>
-            
-            <div class="philosophy-content fade-in">
-                <div class="philosophy-grid">
-                    <div class="philosophy-card">
-                        <div class="philosophy-icon">🎯</div>
-                        <h3>Keep It Simple</h3>
-                        <p>Finance should be accessible, not intimidating. I believe in stripping away unnecessary complexity to focus on what truly matters—clear insights that drive decisions.</p>
-                    </div>
-                    
-                    <div class="philosophy-card">
-                        <div class="philosophy-icon">🤝</div>
-                        <h3>Support Operations</h3>
-                        <p>Finance exists to empower the business, not constrain it. I work closely with operators to provide the KPIs and insights they need to drive revenue and growth.</p>
-                    </div>
-                    
-                    <div class="philosophy-card">
-                        <div class="philosophy-icon">⚡</div>
-                        <h3>Right Tool, Right Job</h3>
-                        <p>Accounting financials should stay financial—clean, compliant, and clear. When operations need strategic insights, that's where FP&A steps in with purpose-built analysis.</p>
-                    </div>
-                </div>
-                
-                <div class="philosophy-statement">
-                    <blockquote>
-                        "I've learned that the best finance teams don't just report what happened—they illuminate what's possible. My role isn't to complicate the numbers; it's to make them work harder for the business."
-                    </blockquote>
-                    <div class="philosophy-details">
-                        <p>This philosophy has guided my work from startup to scale-up environments. Whether I'm implementing a new ERP system, optimizing cash flow, or building financial models, I always ask: <strong>Does this make the business more effective?</strong> If the answer isn't a clear yes, we're overcomplicating things.</p>
-                        
-                        <p>Great finance isn't about showing how smart you are with complex models—it's about making everyone else smarter with clear, actionable insights.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">My Professional Journey</h2>
-                <p class="section-subtitle">Stories of growth, challenges overcome, and value delivered</p>
-            </div>
-            
-            <div class="story-timeline">
-                <div class="story-item fade-in">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-meta">
-                                <span class="story-period">Oct 2024 – Present</span>
-                                <span class="story-role">FP&A Manager</span>
-                            </div>
-                            <div class="company-badge">The Vets</div>
-                        </div>
-                        <div class="story-content">
-                            <h3 class="story-title">Building Financial Intelligence for Scaling Veterinary Care</h3>
-                            <p class="story-narrative">
-                                When The Vets brought me on as FP&A Manager, they were experiencing rapid growth but needed better financial visibility to make strategic decisions. I stepped in to build the financial infrastructure that would support their expansion while maintaining operational excellence.
-                            </p>
-                            <p class="story-narrative">
-                                I created dynamic financial models that don't just track numbers—they tell the story of the business. By integrating revenue forecasting with capacity planning and operational KPIs, leadership now has real-time insights into what's driving growth and where opportunities lie.
-                            </p>
-                            <div class="story-highlights">
-                                <div class="highlight-item">
-                                    <strong>Built:</strong> Comprehensive financial reporting that transforms complex data into actionable insights for regional operations
-                                </div>
-                                <div class="highlight-item">
-                                    <strong>Delivered:</strong> Board-ready financial packages and 13-week rolling cash flow models for strategic planning
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-item fade-in">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-meta">
-                                <span class="story-period">Apr 2024 - Oct 2024</span>
-                                <span class="story-role">Assistant Controller</span>
-                            </div>
-                            <div class="company-badge">BetterVet</div>
-                        </div>
-                        <div class="story-content">
-                            <h3 class="story-title">Turning Financial Discipline into Growth Catalyst</h3>
-                            <p class="story-narrative">
-                                BetterVet was at a critical juncture—managing $10M in debt while scaling operations. As Assistant Controller, I became the bridge between financial stewardship and aggressive growth goals. The challenge wasn't just managing money; it was optimizing every dollar to fuel expansion.
-                            </p>
-                            <p class="story-narrative">
-                                Through surgical precision in G&A optimization and deep partnership with operations, I helped transform BetterVet's financial profile. We didn't just cut costs—we strategically reallocated resources to drive a 32% EBITDA improvement while maintaining growth momentum.
-                            </p>
-                            <div class="story-highlights">
-                                <div class="highlight-item">
-                                    <strong>Impact:</strong> $300K annual savings through strategic contract negotiation and process optimization
-                                </div>
-                                <div class="highlight-item">
-                                    <strong>Result:</strong> Reduced $400K monthly marketing spend without compromising growth trajectory
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-item fade-in">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-meta">
-                                <span class="story-period">Dec 2022 - Apr 2024</span>
-                                <span class="story-role">Senior Accountant</span>
-                            </div>
-                            <div class="company-badge">BetterVet</div>
-                        </div>
-                        <div class="story-content">
-                            <h3 class="story-title">Building Systems for Scale</h3>
-                            <p class="story-narrative">
-                                As BetterVet grew from startup to scale-up, our financial systems needed to evolve rapidly. I led the charge on implementing Oracle NetSuite, transforming how we managed our financial operations across multiple states and employment types.
-                            </p>
-                            <p class="story-narrative">
-                                The real test came during our first external audit. Working with 150+ team members across W2 and 1099 classifications, complex multi-state payroll, and rapid growth, we needed bulletproof processes. The result? A clean audit opinion that validated our financial integrity.
-                            </p>
-                            <div class="story-highlights">
-                                <div class="highlight-item">
-                                    <strong>Achievement:</strong> Reduced month-end close time by 3 days through ERP implementation
-                                </div>
-                                <div class="highlight-item">
-                                    <strong>Milestone:</strong> Successfully navigated first external US GAAP audit with clean opinion
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-item fade-in">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-meta">
-                                <span class="story-period">Nov 2021 - Dec 2022</span>
-                                <span class="story-role">Staff Accountant</span>
-                            </div>
-                            <div class="company-badge">BetterVet</div>
-                        </div>
-                        <div class="story-content">
-                            <h3 class="story-title">Foundation Building in High-Growth Environment</h3>
-                            <p class="story-narrative">
-                                Joining BetterVet as Staff Accountant meant stepping into the exciting chaos of a fast-growing startup. With month-end closes, financial statement preparation, and the pressure of an upcoming Series A, every detail mattered.
-                            </p>
-                            <p class="story-narrative">
-                                When Alta Partners led our $40M Series A raise, I was right in the thick of due diligence, ensuring our financial house was in perfect order. It was my first taste of how solid accounting fundamentals become the bedrock for major business milestones.
-                            </p>
-                            <div class="story-highlights">
-                                <div class="highlight-item">
-                                    <strong>Responsibility:</strong> Complete financial statement preparation and multi-entity consolidations
-                                </div>
-                                <div class="highlight-item">
-                                    <strong>Success:</strong> Supported $40M Series A fundraising through meticulous due diligence preparation
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="story-item fade-in">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-meta">
-                                <span class="story-period">Jul 2020 – Sep 2020</span>
-                                <span class="story-role">Intern</span>
-                            </div>
-                            <div class="company-badge">Spur Reply</div>
-                        </div>
-                        <div class="story-content">
-                            <h3 class="story-title">Where Data Visualization Met Strategy</h3>
-                            <p class="story-narrative">
-                                My journey in professional finance started at Spur Reply, where I discovered the power of turning raw consultant performance data into compelling PowerBI visualizations. This internship taught me that numbers without story are just spreadsheets—but numbers with narrative drive decisions.
-                            </p>
-                            <div class="story-highlights">
-                                <div class="highlight-item">
-                                    <strong>Learning:</strong> Transformed complex data into strategic insights that shaped sales strategy
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Core Skills</h2>
-                <p class="section-subtitle">Technical expertise and financial acumen for modern businesses</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>📊 Financial Expertise</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Month-end Close</span>
-                        <span class="skill-tag">US GAAP</span>
-                        <span class="skill-tag">Financial Modeling</span>
-                        <span class="skill-tag">Cash Flow Forecasting</span>
-                        <span class="skill-tag">KPI Development</span>
-                        <span class="skill-tag">Cost Optimization</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category fade-in">
-                    <h3>💻 Systems & Technology</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">QuickBooks</span>
-                        <span class="skill-tag">NetSuite</span>
-                        <span class="skill-tag">PowerBI</span>
-                        <span class="skill-tag">Advanced Excel</span>
-                        <span class="skill-tag">Rippling</span>
-                        <span class="skill-tag">Bill.com</span>
-                        <span class="skill-tag">Carta</span>
-                        <span class="skill-tag">Cash Pro</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to discuss how financial strategy can drive your business forward</p>
-            </div>
-            
-            <div class="contact-content fade-in">
-                <div class="contact-info">
-                    <a href="mailto:chenyi.keyser@gmail.com" class="contact-item">
-                        📧 chenyi.keyser@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/chenyikeyser/" class="contact-item" target="_blank">
-                        💼 LinkedIn Profile
-                    </a>
-                    <div class="contact-item">
-                        📍 Boston, MA
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Christopher Chenyi Keyser | Keyser Advisory. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
+    <div class="app-layout">
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade-in animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Quote rotation functionality
-        const quotes = [
-            "Numbers tell stories, I help you listen",
-            "From spreadsheets to strategy",
-            "Making finance approachable, one model at a time",
-            "Turning complexity into clarity",
-            "Data-driven decisions, human-centered results"
-        ];
-
-        let currentQuoteIndex = 0;
-        const quoteElement = document.getElementById('rotatingQuote');
-
-        function rotateQuote() {
-            quoteElement.classList.add('quote-fade-out');
+        <div class="sidebar">
+            <div class="logo" onclick="location.reload()">⚡️ LifeStack<span>OS</span></div>
             
-            setTimeout(() => {
-                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-                quoteElement.textContent = quotes[currentQuoteIndex];
-                quoteElement.classList.remove('quote-fade-out');
-                quoteElement.classList.add('quote-fade-in');
+            <ul class="nav-menu">
+                <li class="nav-item active" onclick="switchView('roadmap', this)"><span>🗺️</span> Roadmap</li>
+                <li class="nav-item" onclick="switchView('milestones', this)"><span>🚩</span> Milestones</li>
+                <li class="nav-item" onclick="switchView('toolkit', this)"><span>🧰</span> Toolkit</li>
+                <li class="nav-item" onclick="switchView('audit', this)"><span>🔍</span> Audit</li>
+                <li class="nav-item" onclick="switchView('about', this)"><span>👋</span> About</li>
+            </ul>
+
+            <div class="user-widget">
+                <div class="avatar">U</div>
+                <div style="font-size: 13px;">
+                    <div style="font-weight: 700; color: var(--text-main);">Guest User</div>
+                    <div style="color: var(--text-muted); font-size: 11px;">Local Account</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-width">
                 
-                setTimeout(() => {
-                    quoteElement.classList.remove('quote-fade-in');
-                }, 500);
-            }, 500);
-        }
+                <div class="header-area">
+                    <h1 class="page-title" id="page-title">Roadmap</h1>
+                    <div class="page-subtitle" id="page-subtitle">Your step-by-step execution plan.</div>
+                </div>
 
-        // Start quote rotation after page load
-        let quoteInterval;
-        function startQuoteRotation() {
-            quoteInterval = setInterval(rotateQuote, 3500);
-        }
+                <div id="view-roadmap" class="view-section">
+                    <div id="roadmap-container">
+                        </div>
+                </div>
 
-        // Typing effect for hero title (optional enhancement)
-        function typeWriter(element, text, delay = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function typing() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(typing, delay);
+                <div id="view-milestones" class="view-section hidden">
+                    <div id="milestone-grid" class="grid-cards"></div>
+                </div>
+
+                <div id="view-toolkit" class="view-section hidden">
+                    <div style="background: #ecfdf5; border: 1px solid #d1fae5; color: #047857; padding: 20px; border-radius: var(--radius-sm); margin-bottom: 30px; font-size: 14px; font-weight: 500;">
+                        <strong>Editor's Note:</strong> I do not sell financial products. These resources are curated based on efficiency, low fees, and user experience.
+                    </div>
+                    
+                    <h3 style="margin-bottom: 20px;">Credit Card Stack</h3>
+                    <div class="grid-cards">
+                        <a href="https://www.nerdwallet.com/best/credit-cards/secured" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">🧱</div>
+                            <h3>Level 0: The Builder</h3>
+                            <p><strong>For:</strong> No credit/Bad credit.<br><strong>Pick:</strong> Discover It Secured.</p>
+                            <div class="btn-action">Compare Secured Cards →</div>
+                        </a>
+                        <a href="https://www.nerdwallet.com/best/credit-cards/cash-back" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">💳</div>
+                            <h3>Level 1: Cash Back</h3>
+                            <p><strong>For:</strong> First unsecured card.<br><strong>Picks:</strong> Chase Freedom, Citi Double Cash.</p>
+                            <div class="btn-action">View Cash Back →</div>
+                        </a>
+                        <a href="https://thepointsguy.com/credit-cards/travel/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">✈️</div>
+                            <h3>Level 2: The Traveler</h3>
+                            <p><strong>For:</strong> Rewards ($95 fee).<br><strong>Picks:</strong> Chase Sapphire Preferred, Venture X.</p>
+                            <div class="btn-action">Compare Travel Cards →</div>
+                        </a>
+                        <a href="https://thepointsguy.com/credit-cards/premium/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">💎</div>
+                            <h3>Level 3: Luxury</h3>
+                            <p><strong>For:</strong> Lounge/Perks ($550+ fee).<br><strong>Picks:</strong> Amex Gold/Platinum, Chase Reserve.</p>
+                            <div class="btn-action">View Premium →</div>
+                        </a>
+                    </div>
+
+                    <h3 style="margin: 40px 0 20px 0;">Budgeting & Systems</h3>
+                    <div class="grid-cards">
+                        <a href="https://www.monarchmoney.com/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">👑</div>
+                            <h3>Monarch Money</h3>
+                            <p>Modern replacement for Mint. Great for couples.</p>
+                            <div class="btn-action">View Monarch →</div>
+                        </a>
+                        <a href="https://www.ynab.com/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">🏗️</div>
+                            <h3>YNAB</h3>
+                            <p>Zero-based budgeting. Best for aggressive debt payoff.</p>
+                            <div class="btn-action">Try YNAB →</div>
+                        </a>
+                    </div>
+
+                    <h3 style="margin: 40px 0 20px 0;">Investing & Banking</h3>
+                    <div class="grid-cards">
+                        <a href="https://fidelity.com" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">📈</div>
+                            <h3>Fidelity</h3>
+                            <p>Best overall brokerage. Fractional shares & zero fees.</p>
+                            <div class="btn-action">Go to Fidelity →</div>
+                        </a>
+                        <a href="https://vanguard.com" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">🛡️</div>
+                            <h3>Vanguard</h3>
+                            <p>The pioneer of low-cost index funds.</p>
+                            <div class="btn-action">Go to Vanguard →</div>
+                        </a>
+                        <a href="https://www.nerdwallet.com/best/banking/high-yield-online-savings-accounts" target="_blank" class="card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon">🏦</div>
+                            <h3>High Yield Savings</h3>
+                            <p>Curated list of banks paying >4% APY (Ally, SoFi, Marcus).</p>
+                            <div class="btn-action">Compare Rates →</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="view-audit" class="view-section hidden">
+                    <div class="audit-container">
+                        <div style="font-size: 40px; margin-bottom: 20px;">🩺</div>
+                        <h3 style="font-size: 24px; margin-bottom: 10px;">System Diagnostic</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 30px;">Answer 4 questions to identify critical leaks.</p>
+                        <div id="audit-questions"></div>
+                        <div id="audit-result" class="hidden" style="margin-top: 30px; background: var(--text-main); color: white; padding: 24px; border-radius: var(--radius-sm);">
+                            <strong style="display:block; margin-bottom: 10px; font-size: 18px;">Analysis Complete</strong> 
+                            <span id="audit-text" style="opacity: 0.9; line-height: 1.6;"></span>
+                            <br>
+                            <button onclick="switchView('roadmap')" style="margin-top: 20px; background: white; color: black; border: none; padding: 12px 24px; border-radius: 50px; font-weight: 700; cursor: pointer;">Execute Fixes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-about" class="view-section hidden">
+                    <div class="bio-hero">
+                        <div class="bio-avatar">CK</div>
+                        <div>
+                            <h2 style="font-size: 24px; margin: 0 0 8px 0; color: var(--text-main);">Built by Chenyi Keyser</h2>
+                            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                                <span style="background:var(--bg-body); padding:4px 10px; border-radius:50px; font-size:11px; font-weight:700; color:var(--text-muted);">FP&A MANAGER</span>
+                                <span style="background:var(--bg-body); padding:4px 10px; border-radius:50px; font-size:11px; font-weight:700; color:var(--text-muted);">FINANCE OPERATOR</span>
+                            </div>
+                            <div class="bio-quote">"Finance should be accessible, not intimidating. I believe in stripping away complexity to focus on clear insights."</div>
+                            <a href="https://www.linkedin.com/in/chenyikeyser/" target="_blank" style="display:inline-block; margin-top:10px; font-size:14px; font-weight:700; color:var(--accent); text-decoration:none;">Connect on LinkedIn →</a>
+                        </div>
+                    </div>
+
+                    <div style="max-width: 700px; margin: 0 auto;">
+                        <h3 style="margin-bottom: 20px;">The Philosophy</h3>
+                        <div class="grid-cards">
+                            <div class="card">
+                                <h3>⚡ Keep It Simple</h3>
+                                <p>Don't track lattes. Track big wins. Saving small dollars doesn't go far. Focus on large items like rent and insurance.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🤝 Support Operations</h3>
+                                <p>Finance exists to empower your life, not constrain it. Use data to drive revenue and growth, not just track expenses.</p>
+                            </div>
+                            <div class="card">
+                                <h3>🛠 Right Tool, Right Job</h3>
+                                <p>When operations need strategic insights, that's where FP&A steps in. Don't use a hammer when you need a scalpel.</p>
+                            </div>
+                        </div>
+
+                        <h3 style="margin: 50px 0 20px 0;">Track Record</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Oct 2024 – Present</div>
+                            <div class="timeline-title">The Vets</div>
+                            <div class="timeline-role">FP&A Manager</div>
+                            <div class="timeline-desc">Building financial infrastructure for scaling operations. Integrated revenue forecasting with capacity planning to give leadership real-time insights.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Apr 2024 - Oct 2024</div>
+                            <div class="timeline-title">BetterVet</div>
+                            <div class="timeline-role">Assistant Controller</div>
+                            <div class="timeline-desc">Optimized G&A expenses to drive a 32% EBITDA improvement while managing $10M in debt. Proved that financial discipline fuels growth.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Dec 2022 - Apr 2024</div>
+                            <div class="timeline-title">BetterVet</div>
+                            <div class="timeline-role">Senior Accountant</div>
+                            <div class="timeline-desc">Led Oracle NetSuite implementation across multiple states. Successfully navigated first external US GAAP audit with a clean opinion.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Nov 2021 - Dec 2022</div>
+                            <div class="timeline-title">BetterVet</div>
+                            <div class="timeline-role">Staff Accountant</div>
+                            <div class="timeline-desc">Supported a $40M Series A raise through meticulous due diligence. Learned how solid accounting fundamentals become the bedrock for major milestones.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="drawer">
+        <div class="drawer-header">
+            <h2 id="drawer-title" style="margin:0; font-size:20px; font-weight:800;">Details</h2>
+            <button class="drawer-close" onclick="closeDrawer()">✕</button>
+        </div>
+        <div class="drawer-content">
+            <p id="drawer-desc" style="color:var(--text-muted); font-size:15px; line-height:1.6; margin-bottom:24px;"></p>
+            <div class="drawer-section-title" style="font-size:11px; font-weight:700; color:var(--text-muted); letter-spacing:1px; margin-bottom:10px;">EXECUTION PROTOCOL</div>
+            <div id="drawer-checklist"></div>
+        </div>
+        <div class="drawer-footer">
+            <button class="btn-action" onclick="toggleTaskFromDrawer()" style="margin:0;">Mark as Complete</button>
+        </div>
+    </div>
+
+<script>
+    // --- DATA ---
+    const roadmapData = [
+        {
+            phase: "PHASE 1: SECURITY",
+            tasks: [
+                { 
+                    id: "audit", title: "The 30-Day Audit", desc: "Connect accounts to Monarch or Copilot. You cannot optimize what you do not see.",
+                    fullDesc: "Before you budget, you must audit. Most people bleed money through 'Ghost Subscriptions' and unchecked dining spend.",
+                    checks: ["Download Monarch, Copilot, or RocketMoney", "Connect all bank accounts and credit cards", "Review the last 30 days of transactions", "Cancel at least 2 unused subscriptions"]
+                },
+                { 
+                    id: "buffer", title: "Liquidity Buffer", desc: "Save $1,000 - $2,000 cash. This prevents you from using debt during minor emergencies.",
+                    fullDesc: "This is not your full emergency fund. This is a firewall. It stops you from using a credit card when a tire blows out.",
+                    checks: ["Open a High Yield Savings Account (Ally/Marcus)", "Transfer $1,000 immediately", "Nickname this account 'DO NOT TOUCH'"]
+                },
+                { 
+                    id: "match", title: "Employer Match", desc: "Set 401k contribution to exactly the match %. It's 100% free capital.",
+                    fullDesc: "If your employer matches 3%, and you don't contribute, you are voluntarily taking a pay cut. This is the highest ROI investment you will ever make.",
+                    checks: ["Log into your 401k provider", "Check the match policy", "Set contribution to match that exact %"]
                 }
-            }
-            typing();
+            ]
+        },
+        {
+            phase: "PHASE 2: DELETION",
+            tasks: [
+                { 
+                    id: "debt", title: "Toxic Debt Purge", desc: "Pay off debt with interest > 5%. If it's under 5%, pay minimums and invest the rest.",
+                    fullDesc: "Mathematical logic: You cannot out-invest a 20% credit card interest rate. Kill the toxic debt before investing aggressively. Low interest (<5%) is negligible.",
+                    checks: ["List all debts (Balance & Interest Rate)", "Attack highest interest rate first (Avalanche)", "Set lower interest debts to auto-pay minimums"]
+                },
+                { 
+                    id: "score", title: "Credit Optimization", desc: "Set auto-pay statement balance. Request limit increases every 6 months.",
+                    fullDesc: "Credit is a game of trust. High utilization hurts your score. Higher limits = Lower utilization = Higher score.",
+                    checks: ["Set all cards to 'Auto-pay Statement Balance'", "Call banks to request credit limit increase", "Never close your oldest credit card"]
+                }
+            ]
+        },
+        {
+            phase: "PHASE 3: GROWTH",
+            tasks: [
+                { 
+                    id: "runway", title: "Full Runway", desc: "Save 3-6 months expenses in High Yield Savings. This is insurance, not an investment.",
+                    fullDesc: "Calculate your 'Burn Rate' (Minimum needed to survive). Multiply by 3. This buys you freedom to quit a bad job.",
+                    checks: ["Calculate monthly burn rate", "Set up auto-transfer on payday", "Reach 3 months of expenses"]
+                },
+                { 
+                    id: "tax", title: "Tax Optimization", desc: "Max out HSA and Roth IRA. These grow tax-free forever.",
+                    fullDesc: "Don't let taxes drag your returns. HSA is triple-tax advantaged. Roth IRA is tax-free in retirement.",
+                    checks: ["Open Roth IRA", "Set up monthly contribution", "If eligible, max out HSA", "Invest HSA funds (Don't keep as cash)"]
+                },
+                { 
+                    id: "auto", title: "Index Fund Protocol", desc: "Buy VOO or VTI (S&P 500). Why? 90% of traders fail to beat the market.",
+                    fullDesc: "Simple beats smart. Buying the whole market (VTI/VOO) guarantees you capture all economic growth. Don't stock pick.",
+                    checks: ["Select 'VTI' or 'VOO'", "Set to 'Reinvest Dividends'", "Automate buying on payday"]
+                },
+                { 
+                    id: "career", title: "Human Capital", desc: "Keep a 'Project List' of wins. Negotiate every 2 years.",
+                    fullDesc: "Your salary is your biggest wealth multiplier. Saving $5 on coffee is nothing compared to a $20k raise. Focus on getting more, not just saving small dollars.",
+                    checks: ["Start a 'Wins Folder' email label", "Document 3 big wins per quarter", "Update LinkedIn profile", "Negotiate or switch jobs every 2-3 years"]
+                }
+            ]
         }
+    ];
 
-        // Initialize typing effect and start quote rotation on page load
-        window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero-text h1');
-            const originalText = heroTitle.textContent;
-            typeWriter(heroTitle, originalText, 80);
-            
-            // Start quote rotation after a delay
-            setTimeout(() => {
-                startQuoteRotation();
-            }, 2000);
+    const milestoneData = [
+        { id: "grad", title: "Graduation", desc: "Consolidate loans. Live like a student for 2 years. Enroll in 401k immediately." },
+        { id: "car", title: "Buying a Car", desc: "Depreciating asset. Buy used (3-year old) in Cash. Avoid leases unless you can deduct it as a business expense." },
+        { id: "house", title: "Housing Strategy", desc: "Rent is not 'throwing money away'—it buys flexibility. Only buy if you will stay 7+ years and PITI < 30% of income." },
+        { id: "travel", title: "Travel Hacking", desc: "Use credit card points for free travel. Requires 740+ credit score and paying balances in full every month." }
+    ];
+
+    let completed = JSON.parse(localStorage.getItem('ls_done_v17')) || [];
+    let auditAnswers = {};
+    let currentOpenDrawerId = null;
+
+    function enterApp() { document.getElementById('landing-page').classList.add('hidden'); }
+
+    // --- DRAWER FUNCTIONS ---
+    function openDrawer(id) {
+        currentOpenDrawerId = id;
+        // Find task across phases
+        let item = null;
+        for(let p of roadmapData) {
+            let found = p.tasks.find(t => t.id === id);
+            if(found) { item = found; break; }
+        }
+        if(!item) return;
+
+        document.getElementById('drawer-title').innerText = item.title;
+        document.getElementById('drawer-desc').innerHTML = item.fullDesc;
+        const list = document.getElementById('drawer-checklist');
+        list.innerHTML = '';
+        item.checks.forEach(check => {
+            list.innerHTML += `<div class="checklist-item"><input type="checkbox"><div style="font-size:14px;">${check}</div></div>`;
         });
-    </script>
+        document.getElementById('drawer-overlay').classList.add('open');
+        document.getElementById('drawer').classList.add('open');
+    }
+
+    function closeDrawer() {
+        document.getElementById('drawer-overlay').classList.remove('open');
+        document.getElementById('drawer').classList.remove('open');
+        currentOpenDrawerId = null;
+    }
+
+    function toggleTaskFromDrawer() {
+        if(currentOpenDrawerId) toggleTask(currentOpenDrawerId);
+        closeDrawer();
+    }
+
+    function toggleTask(id) {
+        if(completed.includes(id)) completed = completed.filter(i => i !== id);
+        else completed.push(id);
+        localStorage.setItem('ls_done_v17', JSON.stringify(completed));
+        renderRoadmap();
+    }
+
+    function renderRoadmap() {
+        const container = document.getElementById('roadmap-container');
+        container.innerHTML = '';
+        
+        roadmapData.forEach(phase => {
+            let html = `<div class="phase-section"><div class="phase-header">${phase.phase} <div class="phase-line"></div></div>`;
+            phase.tasks.forEach(task => {
+                const isDone = completed.includes(task.id);
+                html += `
+                    <div class="task-row ${isDone ? 'done' : ''}" onclick="openDrawer('${task.id}')">
+                        <div class="row-icon">${isDone ? '✓' : '⚡️'}</div>
+                        <div class="row-content">
+                            <div class="task-title">${task.title}</div>
+                            <div class="task-desc">${task.desc}</div>
+                        </div>
+                        <div style="font-size:20px; color:var(--border);">›</div>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+            container.innerHTML += html;
+        });
+    }
+
+    function renderMilestones() {
+        const grid = document.getElementById('milestone-grid');
+        grid.innerHTML = '';
+        milestoneData.forEach(item => {
+            grid.innerHTML += `
+                <div class="card">
+                    <div class="card-icon">🚩</div>
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+        });
+    }
+
+    function renderAudit() {
+        const container = document.getElementById('audit-questions');
+        const questions = [
+            { id: 1, text: "Carrying credit card debt?" },
+            { id: 2, text: "Have 3 months of cash saved?" },
+            { id: 3, text: "Credit score above 720?" },
+            { id: 4, text: "Getting full 401k match?" }
+        ];
+        container.innerHTML = '';
+        questions.forEach(q => {
+            container.innerHTML += `
+                <div class="q-row">
+                    <div class="q-text">${q.text}</div>
+                    <div class="choice-row">
+                        <div class="choice-btn" onclick="selectAudit(${q.id}, 'Yes', this)">Yes</div>
+                        <div class="choice-btn" onclick="selectAudit(${q.id}, 'No', this)">No</div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function switchView(viewName, btnElement) {
+        // Update Title
+        const titles = {
+            'roadmap': ['Roadmap', 'Your step-by-step execution plan.'],
+            'milestones': ['Milestones', 'Checklists for major life events.'],
+            'toolkit': ['Toolkit', 'Curated resources for efficiency.'],
+            'audit': ['Audit', 'Diagnostic tool for financial health.'],
+            'about': ['About', 'The philosophy behind the system.']
+        };
+        document.getElementById('page-title').innerText = titles[viewName][0];
+        document.getElementById('page-subtitle').innerText = titles[viewName][1];
+
+        document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+        document.getElementById(`view-${viewName}`).classList.remove('hidden');
+
+        if(btnElement) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            btnElement.classList.add('active');
+        }
+    }
+
+    function selectAudit(q, val, el) {
+        const siblings = el.parentNode.children;
+        for(let sib of siblings) sib.classList.remove('selected');
+        el.classList.add('selected');
+        auditAnswers[q] = val;
+        if(Object.keys(auditAnswers).length === 4) runAudit();
+    }
+
+    function runAudit() {
+        const result = document.getElementById('audit-result');
+        const text = document.getElementById('audit-text');
+        result.classList.remove('hidden');
+        let msg = "System Healthy. Proceed to Investing.";
+        if(auditAnswers[1] === 'Yes') msg = "CRITICAL: High interest debt detected. Focus entirely on Phase 2.";
+        else if(auditAnswers[2] === 'No') msg = "WARNING: Low liquidity. Build your buffer before investing.";
+        else if(auditAnswers[4] === 'No') msg = "ALERT: You are missing free money (Employer Match). Fix immediately.";
+        text.innerText = msg;
+    }
+
+    renderRoadmap(); renderMilestones(); renderAudit();
+</script>
 </body>
 </html>
