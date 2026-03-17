@@ -1,628 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LifeStack OS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* --- THEME: SOFT SAAS --- */
-            --bg-body: #f3f5f8;       
-            --bg-card: #ffffff;
-            --bg-sidebar: #ffffff;
-            --text-main: #111827;     
-            --text-muted: #6b7280;    
-            --accent: #3b82f6;        
-            --accent-soft: #eff6ff;
-            --success: #10b981;
-            --success-soft: #d1fae5;
-            --border: #e5e7eb;
-            --radius-lg: 20px;        
-            --radius-sm: 12px;
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chenyi Keyser</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        * { box-sizing: border-box; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #F0EDE6;
+  color: #1a1a18;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            margin: 0; padding: 0; height: 100vh; overflow: hidden; 
-        }
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  max-width: 780px;
+  padding: 3rem 2.5rem;
+  opacity: 0;
+  animation: enter 0.7s 0.15s forwards;
+}
 
-        .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 0.4s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* Left column */
+.left {
+  text-align: right;
+  padding-top: 0.3rem;
+}
 
-        /* --- LAYOUT --- */
-        .app-layout { display: grid; grid-template-columns: 260px 1fr; height: 100vh; }
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
 
-        /* --- SIDEBAR --- */
-        .sidebar {
-            background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 24px;
-            display: flex; flex-direction: column; justify-content: space-between; z-index: 50;
-        }
-        .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; margin-bottom: 40px; color: var(--text-main); cursor: pointer; }
-        .logo span { color: var(--accent); }
-        .nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
-        .nav-item {
-            padding: 12px 16px; border-radius: var(--radius-sm); font-weight: 600; font-size: 14px;
-            color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px;
-        }
-        .nav-item:hover { background: var(--bg-body); color: var(--text-main); }
-        .nav-item.active { background: var(--accent-soft); color: var(--accent); }
-        .user-widget {
-            background: var(--bg-body); padding: 12px; border-radius: var(--radius-sm);
-            display: flex; gap: 10px; align-items: center; border: 1px solid transparent;
-        }
-        .avatar { width: 32px; height: 32px; background: #e5e7eb; color: var(--text-muted); border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 700; }
+h1 span {
+  display: block;
+  font-weight: 300;
+  font-style: italic;
+  color: #4A7C6F;
+}
 
-        /* --- MAIN CONTENT --- */
-        .main-content { padding: 40px; overflow-y: auto; position: relative; }
-        .content-width { max-width: 900px; margin: 0 auto; } /* Narrower for focus */
-        .header-area { margin-bottom: 40px; }
-        .page-title { font-size: 32px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -1px; }
-        .page-subtitle { color: var(--text-muted); font-size: 16px; }
+.left-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
 
-        /* --- NEW ROADMAP LAYOUT (STACKED) --- */
-        .phase-section { margin-bottom: 50px; }
-        .phase-header { 
-            display: flex; align-items: center; gap: 12px; margin-bottom: 20px; 
-            font-size: 14px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;
-        }
-        .phase-line { height: 1px; flex-grow: 1; background: var(--border); }
-        
-        .task-row {
-            display: flex; align-items: center; gap: 20px;
-            background: var(--bg-card); padding: 20px; border: 1px solid var(--border);
-            border-radius: var(--radius-sm); margin-bottom: 12px;
-            transition: all 0.2s; cursor: pointer; position: relative;
-        }
-        .task-row:hover { transform: translateX(4px); border-color: var(--accent); box-shadow: var(--shadow); }
-        .task-row.done { opacity: 0.6; background: #fafafa; }
-        .task-row.done .task-title { text-decoration: line-through; }
+.left-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #999;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
 
-        .row-icon { 
-            width: 40px; height: 40px; background: var(--bg-body); border-radius: 10px; 
-            display: grid; place-items: center; font-size: 18px; flex-shrink: 0; 
-        }
-        .row-content { flex-grow: 1; }
-        .task-title { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; }
-        .task-desc { font-size: 13px; color: var(--text-muted); }
-        
-        /* --- BENTO GRIDS (For Toolkit/Milestones) --- */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-        .card {
-            background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px;
-            border: 1px solid var(--border); box-shadow: var(--shadow); transition: all 0.2s ease;
-            position: relative; overflow: hidden; cursor: default;
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-float); border-color: #d1d5db; }
-        .card h3 { margin: 0 0 8px 0; font-size: 18px; font-weight: 700; color: var(--text-main); }
-        .card p { margin: 0; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-        .card-icon { width: 44px; height: 44px; background: var(--bg-body); color: var(--text-main); border-radius: 12px; display: grid; place-items: center; font-size: 20px; margin-bottom: 20px; }
-        .btn-action { display: inline-block; margin-top: 20px; font-size: 13px; font-weight: 700; color: var(--accent); text-decoration: none; cursor: pointer; }
+.left-links a:hover { color: #4A7C6F; }
 
-        /* --- ACTION DRAWER --- */
-        .drawer-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.2); backdrop-filter: blur(2px); z-index: 99;
-            opacity: 0; pointer-events: none; transition: 0.3s ease;
-        }
-        .drawer-overlay.open { opacity: 1; pointer-events: auto; }
-        .drawer {
-            position: fixed; top: 0; right: 0; width: 500px; height: 100%;
-            background: white; z-index: 100;
-            transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: -10px 0 40px rgba(0,0,0,0.1); display: flex; flex-direction: column;
-        }
-        .drawer.open { transform: translateX(0); }
-        .drawer-header { padding: 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: start; }
-        .drawer-close { background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; font-size: 18px; }
-        .drawer-content { padding: 32px; overflow-y: auto; flex-grow: 1; }
-        .drawer-footer { padding: 24px 32px; border-top: 1px solid var(--border); background: #f9fafb; display: flex; justify-content: space-between; align-items: center; }
-        
-        .checklist-item {
-            display: flex; gap: 12px; align-items: start; padding: 16px;
-            border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;
-            cursor: pointer; transition: 0.2s; background: white;
-        }
-        .checklist-item:hover { border-color: var(--accent); background: var(--accent-soft); }
-        .checklist-item input { margin-top: 4px; cursor: pointer; width: 18px; height: 18px; accent-color: var(--accent); }
+/* Right column */
+.right {
+  border-left: 1px solid #E8E6E0;
+  padding-left: 4rem;
+}
 
-        /* --- AUDIT --- */
-        .audit-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: var(--radius-lg); border: 1px solid var(--border); text-align: center; }
-        .choice-btn { flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-weight: 600; transition: 0.2s; }
-        .choice-btn:hover { background: var(--bg-body); }
-        .choice-btn.selected { background: var(--text-main); color: white; border-color: var(--text-main); }
+.bio {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #555;
+  margin-bottom: 2.2rem;
+}
 
-        /* --- ABOUT --- */
-        .bio-hero { display: flex; gap: 30px; align-items: start; margin-bottom: 40px; background: white; padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
-        .bio-avatar { width: 80px; height: 80px; background: var(--text-main); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 24px; font-weight: 800; flex-shrink: 0; }
-        
-        .timeline-item {
-            border-left: 2px solid var(--border); padding-left: 24px; margin-bottom: 30px; position: relative;
-        }
-        .timeline-item::before {
-            content: ""; width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
-            position: absolute; left: -7px; top: 5px; border: 2px solid white;
-        }
-        .timeline-date { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .timeline-title { font-size: 16px; font-weight: 800; color: var(--text-main); }
-        .timeline-role { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
-        .timeline-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.divider {
+  height: 1px;
+  background: #E8E6E0;
+  margin-bottom: 1.8rem;
+}
 
-        /* --- LANDING --- */
-        .landing-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-body); z-index: 999;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-        }
-        .hero-box { max-width: 500px; padding: 40px; }
-        .big-btn {
-            background: var(--text-main); color: white; border: none; padding: 18px 36px; border-radius: 100px;
-            font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow-float); transition: 0.2s; margin-top: 30px;
-        }
-        .big-btn:hover { transform: scale(1.05); }
+.tl-row {
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+}
 
-        @media (max-width: 768px) {
-            .app-layout { grid-template-columns: 1fr; grid-template-rows: 1fr 80px; }
-            .sidebar { 
-                flex-direction: row; position: fixed; bottom: 0; left: 0; width: 100%; height: 80px;
-                padding: 10px 20px; z-index: 90; border-top: 1px solid var(--border); border-right: none;
-                box-shadow: 0 -10px 30px rgba(0,0,0,0.05); justify-content: space-between;
-            }
-            .logo, .user-widget { display: none; } 
-            .nav-menu { flex-direction: row; width: 100%; justify-content: space-between; }
-            .nav-item { flex-direction: column; font-size: 10px; gap: 4px; padding: 8px; background: transparent !important; color: var(--text-muted); }
-            .nav-item.active { color: var(--accent); }
-            .main-content { padding: 20px; padding-bottom: 100px; }
-            .drawer { width: 100%; }
-            .bio-hero { flex-direction: column; }
-        }
-    </style>
+.tl-yr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: #4A7C6F;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.tl-role {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.tl-co {
+  font-weight: 300;
+  color: #999;
+}
+
+.footer {
+  margin-top: 2.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: #ccc;
+  letter-spacing: 0.04em;
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .left { text-align: left; }
+  .left-links { align-items: flex-start; }
+  .right {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #E8E6E0;
+    padding-top: 2rem;
+  }
+}
+</style>
 </head>
 <body>
+<div class="page">
 
-    <div id="landing-page" class="landing-overlay">
-        <div class="hero-box">
-            <div style="font-size: 64px; margin-bottom: 20px;">⚡️</div>
-            <h1 style="font-size: 48px; font-weight: 800; letter-spacing: -2px; margin: 0; line-height: 1; color: var(--text-main);">LifeStack.</h1>
-            <p style="font-size: 18px; color: var(--text-muted); margin-top: 15px; line-height: 1.6;">
-                The financial operating system for high achievers.
-                <br>No fees. No jargon. Pure execution.
-            </p>
-            <button class="big-btn" onclick="enterApp()">Initialize System</button>
-            <p style="margin-top: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700;">100% Free • Private • Local</p>
-        </div>
+  <div class="left">
+    <h1>Christopher<br><span>Chenyi</span><br>Keyser</h1>
+    <div class="left-links">
+      <a href="https://www.linkedin.com/in/chenyikeyser/" target="_blank">LinkedIn →</a>
     </div>
+  </div>
 
-    <div class="app-layout">
-        
-        <div class="sidebar">
-            <div class="logo" onclick="location.reload()">⚡️ LifeStack<span>OS</span></div>
-            
-            <ul class="nav-menu">
-                <li class="nav-item active" onclick="switchView('roadmap', this)"><span>🗺️</span> Roadmap</li>
-                <li class="nav-item" onclick="switchView('milestones', this)"><span>🚩</span> Milestones</li>
-                <li class="nav-item" onclick="switchView('toolkit', this)"><span>🧰</span> Toolkit</li>
-                <li class="nav-item" onclick="switchView('audit', this)"><span>🔍</span> Audit</li>
-                <li class="nav-item" onclick="switchView('about', this)"><span>👋</span> About</li>
-            </ul>
-
-            <div class="user-widget">
-                <div class="avatar">U</div>
-                <div style="font-size: 13px;">
-                    <div style="font-weight: 700; color: var(--text-main);">Guest User</div>
-                    <div style="color: var(--text-muted); font-size: 11px;">Local Account</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="content-width">
-                
-                <div class="header-area">
-                    <h1 class="page-title" id="page-title">Roadmap</h1>
-                    <div class="page-subtitle" id="page-subtitle">Your step-by-step execution plan.</div>
-                </div>
-
-                <div id="view-roadmap" class="view-section">
-                    <div id="roadmap-container">
-                        </div>
-                </div>
-
-                <div id="view-milestones" class="view-section hidden">
-                    <div id="milestone-grid" class="grid-cards"></div>
-                </div>
-
-                <div id="view-toolkit" class="view-section hidden">
-                    <div style="background: #ecfdf5; border: 1px solid #d1fae5; color: #047857; padding: 20px; border-radius: var(--radius-sm); margin-bottom: 30px; font-size: 14px; font-weight: 500;">
-                        <strong>Editor's Note:</strong> I do not sell financial products. These resources are curated based on efficiency, low fees, and user experience.
-                    </div>
-                    
-                    <h3 style="margin-bottom: 20px;">Credit Card Stack</h3>
-                    <div class="grid-cards">
-                        <a href="https://www.nerdwallet.com/best/credit-cards/secured" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">🧱</div>
-                            <h3>Level 0: The Builder</h3>
-                            <p><strong>For:</strong> No credit/Bad credit.<br><strong>Pick:</strong> Discover It Secured.</p>
-                            <div class="btn-action">Compare Secured Cards →</div>
-                        </a>
-                        <a href="https://www.nerdwallet.com/best/credit-cards/cash-back" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">💳</div>
-                            <h3>Level 1: Cash Back</h3>
-                            <p><strong>For:</strong> First unsecured card.<br><strong>Picks:</strong> Chase Freedom, Citi Double Cash.</p>
-                            <div class="btn-action">View Cash Back →</div>
-                        </a>
-                        <a href="https://thepointsguy.com/credit-cards/travel/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">✈️</div>
-                            <h3>Level 2: The Traveler</h3>
-                            <p><strong>For:</strong> Rewards ($95 fee).<br><strong>Picks:</strong> Chase Sapphire Preferred, Venture X.</p>
-                            <div class="btn-action">Compare Travel Cards →</div>
-                        </a>
-                        <a href="https://thepointsguy.com/credit-cards/premium/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">💎</div>
-                            <h3>Level 3: Luxury</h3>
-                            <p><strong>For:</strong> Lounge/Perks ($550+ fee).<br><strong>Picks:</strong> Amex Gold/Platinum, Chase Reserve.</p>
-                            <div class="btn-action">View Premium →</div>
-                        </a>
-                    </div>
-
-                    <h3 style="margin: 40px 0 20px 0;">Budgeting & Systems</h3>
-                    <div class="grid-cards">
-                        <a href="https://www.monarchmoney.com/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">👑</div>
-                            <h3>Monarch Money</h3>
-                            <p>Modern replacement for Mint. Great for couples.</p>
-                            <div class="btn-action">View Monarch →</div>
-                        </a>
-                        <a href="https://www.ynab.com/" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">🏗️</div>
-                            <h3>YNAB</h3>
-                            <p>Zero-based budgeting. Best for aggressive debt payoff.</p>
-                            <div class="btn-action">Try YNAB →</div>
-                        </a>
-                    </div>
-
-                    <h3 style="margin: 40px 0 20px 0;">Investing & Banking</h3>
-                    <div class="grid-cards">
-                        <a href="https://fidelity.com" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">📈</div>
-                            <h3>Fidelity</h3>
-                            <p>Best overall brokerage. Fractional shares & zero fees.</p>
-                            <div class="btn-action">Go to Fidelity →</div>
-                        </a>
-                        <a href="https://vanguard.com" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">🛡️</div>
-                            <h3>Vanguard</h3>
-                            <p>The pioneer of low-cost index funds.</p>
-                            <div class="btn-action">Go to Vanguard →</div>
-                        </a>
-                        <a href="https://www.nerdwallet.com/best/banking/high-yield-online-savings-accounts" target="_blank" class="card" style="text-decoration: none; color: inherit;">
-                            <div class="card-icon">🏦</div>
-                            <h3>High Yield Savings</h3>
-                            <p>Curated list of banks paying >4% APY (Ally, SoFi, Marcus).</p>
-                            <div class="btn-action">Compare Rates →</div>
-                        </a>
-                    </div>
-                </div>
-
-                <div id="view-audit" class="view-section hidden">
-                    <div class="audit-container">
-                        <div style="font-size: 40px; margin-bottom: 20px;">🩺</div>
-                        <h3 style="font-size: 24px; margin-bottom: 10px;">System Diagnostic</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 30px;">Answer 4 questions to identify critical leaks.</p>
-                        <div id="audit-questions"></div>
-                        <div id="audit-result" class="hidden" style="margin-top: 30px; background: var(--text-main); color: white; padding: 24px; border-radius: var(--radius-sm);">
-                            <strong style="display:block; margin-bottom: 10px; font-size: 18px;">Analysis Complete</strong> 
-                            <span id="audit-text" style="opacity: 0.9; line-height: 1.6;"></span>
-                            <br>
-                            <button onclick="switchView('roadmap')" style="margin-top: 20px; background: white; color: black; border: none; padding: 12px 24px; border-radius: 50px; font-weight: 700; cursor: pointer;">Execute Fixes</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="view-about" class="view-section hidden">
-                    <div class="bio-hero">
-                        <div class="bio-avatar">CK</div>
-                        <div>
-                            <h2 style="font-size: 24px; margin: 0 0 8px 0; color: var(--text-main);">Built by Chenyi Keyser</h2>
-                            <div style="display:flex; gap:10px; margin-bottom:15px;">
-                                <span style="background:var(--bg-body); padding:4px 10px; border-radius:50px; font-size:11px; font-weight:700; color:var(--text-muted);">FP&A MANAGER</span>
-                                <span style="background:var(--bg-body); padding:4px 10px; border-radius:50px; font-size:11px; font-weight:700; color:var(--text-muted);">FINANCE OPERATOR</span>
-                            </div>
-                            <div class="bio-quote">"Finance should be accessible, not intimidating. I believe in stripping away complexity to focus on clear insights."</div>
-                            <a href="https://www.linkedin.com/in/chenyikeyser/" target="_blank" style="display:inline-block; margin-top:10px; font-size:14px; font-weight:700; color:var(--accent); text-decoration:none;">Connect on LinkedIn →</a>
-                        </div>
-                    </div>
-
-                    <div style="max-width: 700px; margin: 0 auto;">
-                        <h3 style="margin-bottom: 20px;">The Philosophy</h3>
-                        <div class="grid-cards">
-                            <div class="card">
-                                <h3>⚡ Keep It Simple</h3>
-                                <p>Don't track lattes. Track big wins. Saving small dollars doesn't go far. Focus on large items like rent and insurance.</p>
-                            </div>
-                            <div class="card">
-                                <h3>🤝 Support Operations</h3>
-                                <p>Finance exists to empower your life, not constrain it. Use data to drive revenue and growth, not just track expenses.</p>
-                            </div>
-                            <div class="card">
-                                <h3>🛠 Right Tool, Right Job</h3>
-                                <p>When operations need strategic insights, that's where FP&A steps in. Don't use a hammer when you need a scalpel.</p>
-                            </div>
-                        </div>
-
-                        <h3 style="margin: 50px 0 20px 0;">Track Record</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Oct 2024 – Present</div>
-                            <div class="timeline-title">The Vets</div>
-                            <div class="timeline-role">FP&A Manager</div>
-                            <div class="timeline-desc">Building financial infrastructure for scaling operations. Integrated revenue forecasting with capacity planning to give leadership real-time insights.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Apr 2024 - Oct 2024</div>
-                            <div class="timeline-title">BetterVet</div>
-                            <div class="timeline-role">Assistant Controller</div>
-                            <div class="timeline-desc">Optimized G&A expenses to drive a 32% EBITDA improvement while managing $10M in debt. Proved that financial discipline fuels growth.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Dec 2022 - Apr 2024</div>
-                            <div class="timeline-title">BetterVet</div>
-                            <div class="timeline-role">Senior Accountant</div>
-                            <div class="timeline-desc">Led Oracle NetSuite implementation across multiple states. Successfully navigated first external US GAAP audit with a clean opinion.</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Nov 2021 - Dec 2022</div>
-                            <div class="timeline-title">BetterVet</div>
-                            <div class="timeline-role">Staff Accountant</div>
-                            <div class="timeline-desc">Supported a $40M Series A raise through meticulous due diligence. Learned how solid accounting fundamentals become the bedrock for major milestones.</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+  <div class="right">
+    <p class="bio">I like building things that make the numbers make sense. I spent four years growing, fixing, and occasionally rescuing the finance function at a couple of fast-growing veterinary companies. I've been through capital raises, an acquisition, a merger, and more month-end closes than I can count. I like making complex financials simple, hiking when I can, and finding good coffee wherever I go.</p>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-row"><span class="tl-yr">2026 – Present</span><span class="tl-role">Associate, Restructuring <span class="tl-co">· G2 Capital Advisors</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2024 – 25</span><span class="tl-role">Finance Manager, FP&A <span class="tl-co">· The Vets</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2021 – 24</span><span class="tl-role">Asst. Controller <span class="tl-co">· BetterVet</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2020</span><span class="tl-role">Management Consulting <span class="tl-co">· Spur Reply</span></span></div>
     </div>
+    <div class="footer">Boston, MA · 2026</div>
+  </div>
 
-    <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-    <div class="drawer" id="drawer">
-        <div class="drawer-header">
-            <h2 id="drawer-title" style="margin:0; font-size:20px; font-weight:800;">Details</h2>
-            <button class="drawer-close" onclick="closeDrawer()">✕</button>
-        </div>
-        <div class="drawer-content">
-            <p id="drawer-desc" style="color:var(--text-muted); font-size:15px; line-height:1.6; margin-bottom:24px;"></p>
-            <div class="drawer-section-title" style="font-size:11px; font-weight:700; color:var(--text-muted); letter-spacing:1px; margin-bottom:10px;">EXECUTION PROTOCOL</div>
-            <div id="drawer-checklist"></div>
-        </div>
-        <div class="drawer-footer">
-            <button class="btn-action" onclick="toggleTaskFromDrawer()" style="margin:0;">Mark as Complete</button>
-        </div>
-    </div>
-
-<script>
-    // --- DATA ---
-    const roadmapData = [
-        {
-            phase: "PHASE 1: SECURITY",
-            tasks: [
-                { 
-                    id: "audit", title: "The 30-Day Audit", desc: "Connect accounts to Monarch or Copilot. You cannot optimize what you do not see.",
-                    fullDesc: "Before you budget, you must audit. Most people bleed money through 'Ghost Subscriptions' and unchecked dining spend.",
-                    checks: ["Download Monarch, Copilot, or RocketMoney", "Connect all bank accounts and credit cards", "Review the last 30 days of transactions", "Cancel at least 2 unused subscriptions"]
-                },
-                { 
-                    id: "buffer", title: "Liquidity Buffer", desc: "Save $1,000 - $2,000 cash. This prevents you from using debt during minor emergencies.",
-                    fullDesc: "This is not your full emergency fund. This is a firewall. It stops you from using a credit card when a tire blows out.",
-                    checks: ["Open a High Yield Savings Account (Ally/Marcus)", "Transfer $1,000 immediately", "Nickname this account 'DO NOT TOUCH'"]
-                },
-                { 
-                    id: "match", title: "Employer Match", desc: "Set 401k contribution to exactly the match %. It's 100% free capital.",
-                    fullDesc: "If your employer matches 3%, and you don't contribute, you are voluntarily taking a pay cut. This is the highest ROI investment you will ever make.",
-                    checks: ["Log into your 401k provider", "Check the match policy", "Set contribution to match that exact %"]
-                }
-            ]
-        },
-        {
-            phase: "PHASE 2: DELETION",
-            tasks: [
-                { 
-                    id: "debt", title: "Toxic Debt Purge", desc: "Pay off debt with interest > 5%. If it's under 5%, pay minimums and invest the rest.",
-                    fullDesc: "Mathematical logic: You cannot out-invest a 20% credit card interest rate. Kill the toxic debt before investing aggressively. Low interest (<5%) is negligible.",
-                    checks: ["List all debts (Balance & Interest Rate)", "Attack highest interest rate first (Avalanche)", "Set lower interest debts to auto-pay minimums"]
-                },
-                { 
-                    id: "score", title: "Credit Optimization", desc: "Set auto-pay statement balance. Request limit increases every 6 months.",
-                    fullDesc: "Credit is a game of trust. High utilization hurts your score. Higher limits = Lower utilization = Higher score.",
-                    checks: ["Set all cards to 'Auto-pay Statement Balance'", "Call banks to request credit limit increase", "Never close your oldest credit card"]
-                }
-            ]
-        },
-        {
-            phase: "PHASE 3: GROWTH",
-            tasks: [
-                { 
-                    id: "runway", title: "Full Runway", desc: "Save 3-6 months expenses in High Yield Savings. This is insurance, not an investment.",
-                    fullDesc: "Calculate your 'Burn Rate' (Minimum needed to survive). Multiply by 3. This buys you freedom to quit a bad job.",
-                    checks: ["Calculate monthly burn rate", "Set up auto-transfer on payday", "Reach 3 months of expenses"]
-                },
-                { 
-                    id: "tax", title: "Tax Optimization", desc: "Max out HSA and Roth IRA. These grow tax-free forever.",
-                    fullDesc: "Don't let taxes drag your returns. HSA is triple-tax advantaged. Roth IRA is tax-free in retirement.",
-                    checks: ["Open Roth IRA", "Set up monthly contribution", "If eligible, max out HSA", "Invest HSA funds (Don't keep as cash)"]
-                },
-                { 
-                    id: "auto", title: "Index Fund Protocol", desc: "Buy VOO or VTI (S&P 500). Why? 90% of traders fail to beat the market.",
-                    fullDesc: "Simple beats smart. Buying the whole market (VTI/VOO) guarantees you capture all economic growth. Don't stock pick.",
-                    checks: ["Select 'VTI' or 'VOO'", "Set to 'Reinvest Dividends'", "Automate buying on payday"]
-                },
-                { 
-                    id: "career", title: "Human Capital", desc: "Keep a 'Project List' of wins. Negotiate every 2 years.",
-                    fullDesc: "Your salary is your biggest wealth multiplier. Saving $5 on coffee is nothing compared to a $20k raise. Focus on getting more, not just saving small dollars.",
-                    checks: ["Start a 'Wins Folder' email label", "Document 3 big wins per quarter", "Update LinkedIn profile", "Negotiate or switch jobs every 2-3 years"]
-                }
-            ]
-        }
-    ];
-
-    const milestoneData = [
-        { id: "grad", title: "Graduation", desc: "Consolidate loans. Live like a student for 2 years. Enroll in 401k immediately." },
-        { id: "car", title: "Buying a Car", desc: "Depreciating asset. Buy used (3-year old) in Cash. Avoid leases unless you can deduct it as a business expense." },
-        { id: "house", title: "Housing Strategy", desc: "Rent is not 'throwing money away'—it buys flexibility. Only buy if you will stay 7+ years and PITI < 30% of income." },
-        { id: "travel", title: "Travel Hacking", desc: "Use credit card points for free travel. Requires 740+ credit score and paying balances in full every month." }
-    ];
-
-    let completed = JSON.parse(localStorage.getItem('ls_done_v17')) || [];
-    let auditAnswers = {};
-    let currentOpenDrawerId = null;
-
-    function enterApp() { document.getElementById('landing-page').classList.add('hidden'); }
-
-    // --- DRAWER FUNCTIONS ---
-    function openDrawer(id) {
-        currentOpenDrawerId = id;
-        // Find task across phases
-        let item = null;
-        for(let p of roadmapData) {
-            let found = p.tasks.find(t => t.id === id);
-            if(found) { item = found; break; }
-        }
-        if(!item) return;
-
-        document.getElementById('drawer-title').innerText = item.title;
-        document.getElementById('drawer-desc').innerHTML = item.fullDesc;
-        const list = document.getElementById('drawer-checklist');
-        list.innerHTML = '';
-        item.checks.forEach(check => {
-            list.innerHTML += `<div class="checklist-item"><input type="checkbox"><div style="font-size:14px;">${check}</div></div>`;
-        });
-        document.getElementById('drawer-overlay').classList.add('open');
-        document.getElementById('drawer').classList.add('open');
-    }
-
-    function closeDrawer() {
-        document.getElementById('drawer-overlay').classList.remove('open');
-        document.getElementById('drawer').classList.remove('open');
-        currentOpenDrawerId = null;
-    }
-
-    function toggleTaskFromDrawer() {
-        if(currentOpenDrawerId) toggleTask(currentOpenDrawerId);
-        closeDrawer();
-    }
-
-    function toggleTask(id) {
-        if(completed.includes(id)) completed = completed.filter(i => i !== id);
-        else completed.push(id);
-        localStorage.setItem('ls_done_v17', JSON.stringify(completed));
-        renderRoadmap();
-    }
-
-    function renderRoadmap() {
-        const container = document.getElementById('roadmap-container');
-        container.innerHTML = '';
-        
-        roadmapData.forEach(phase => {
-            let html = `<div class="phase-section"><div class="phase-header">${phase.phase} <div class="phase-line"></div></div>`;
-            phase.tasks.forEach(task => {
-                const isDone = completed.includes(task.id);
-                html += `
-                    <div class="task-row ${isDone ? 'done' : ''}" onclick="openDrawer('${task.id}')">
-                        <div class="row-icon">${isDone ? '✓' : '⚡️'}</div>
-                        <div class="row-content">
-                            <div class="task-title">${task.title}</div>
-                            <div class="task-desc">${task.desc}</div>
-                        </div>
-                        <div style="font-size:20px; color:var(--border);">›</div>
-                    </div>
-                `;
-            });
-            html += `</div>`;
-            container.innerHTML += html;
-        });
-    }
-
-    function renderMilestones() {
-        const grid = document.getElementById('milestone-grid');
-        grid.innerHTML = '';
-        milestoneData.forEach(item => {
-            grid.innerHTML += `
-                <div class="card">
-                    <div class="card-icon">🚩</div>
-                    <h3>${item.title}</h3>
-                    <p>${item.desc}</p>
-                </div>
-            `;
-        });
-    }
-
-    function renderAudit() {
-        const container = document.getElementById('audit-questions');
-        const questions = [
-            { id: 1, text: "Carrying credit card debt?" },
-            { id: 2, text: "Have 3 months of cash saved?" },
-            { id: 3, text: "Credit score above 720?" },
-            { id: 4, text: "Getting full 401k match?" }
-        ];
-        container.innerHTML = '';
-        questions.forEach(q => {
-            container.innerHTML += `
-                <div class="q-row">
-                    <div class="q-text">${q.text}</div>
-                    <div class="choice-row">
-                        <div class="choice-btn" onclick="selectAudit(${q.id}, 'Yes', this)">Yes</div>
-                        <div class="choice-btn" onclick="selectAudit(${q.id}, 'No', this)">No</div>
-                    </div>
-                </div>
-            `;
-        });
-    }
-
-    function switchView(viewName, btnElement) {
-        // Update Title
-        const titles = {
-            'roadmap': ['Roadmap', 'Your step-by-step execution plan.'],
-            'milestones': ['Milestones', 'Checklists for major life events.'],
-            'toolkit': ['Toolkit', 'Curated resources for efficiency.'],
-            'audit': ['Audit', 'Diagnostic tool for financial health.'],
-            'about': ['About', 'The philosophy behind the system.']
-        };
-        document.getElementById('page-title').innerText = titles[viewName][0];
-        document.getElementById('page-subtitle').innerText = titles[viewName][1];
-
-        document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
-        document.getElementById(`view-${viewName}`).classList.remove('hidden');
-
-        if(btnElement) {
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            btnElement.classList.add('active');
-        }
-    }
-
-    function selectAudit(q, val, el) {
-        const siblings = el.parentNode.children;
-        for(let sib of siblings) sib.classList.remove('selected');
-        el.classList.add('selected');
-        auditAnswers[q] = val;
-        if(Object.keys(auditAnswers).length === 4) runAudit();
-    }
-
-    function runAudit() {
-        const result = document.getElementById('audit-result');
-        const text = document.getElementById('audit-text');
-        result.classList.remove('hidden');
-        let msg = "System Healthy. Proceed to Investing.";
-        if(auditAnswers[1] === 'Yes') msg = "CRITICAL: High interest debt detected. Focus entirely on Phase 2.";
-        else if(auditAnswers[2] === 'No') msg = "WARNING: Low liquidity. Build your buffer before investing.";
-        else if(auditAnswers[4] === 'No') msg = "ALERT: You are missing free money (Employer Match). Fix immediately.";
-        text.innerText = msg;
-    }
-
-    renderRoadmap(); renderMilestones(); renderAudit();
-</script>
+</div>
 </body>
 </html>
