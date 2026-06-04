@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chenyi Keyser</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #F0EDE6;
+  color: #1a1a18;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  max-width: 780px;
+  padding: 3rem 2.5rem;
+  opacity: 0;
+  animation: enter 0.7s 0.15s forwards;
+}
+
+/* Left column */
+.left {
+  text-align: right;
+  padding-top: 0.3rem;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+h1 span {
+  display: block;
+  font-weight: 300;
+  font-style: italic;
+  color: #4A7C6F;
+}
+
+.left-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.left-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #999;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.left-links a:hover { color: #4A7C6F; }
+
+/* Right column */
+.right {
+  border-left: 1px solid #E8E6E0;
+  padding-left: 4rem;
+}
+
+.bio {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #555;
+  margin-bottom: 2.2rem;
+}
+
+.divider {
+  height: 1px;
+  background: #E8E6E0;
+  margin-bottom: 1.8rem;
+}
+
+.tl-row {
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+}
+
+.tl-yr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: #4A7C6F;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.tl-role {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.tl-co {
+  font-weight: 300;
+  color: #999;
+}
+
+.footer {
+  margin-top: 2.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: #ccc;
+  letter-spacing: 0.04em;
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .left { text-align: left; }
+  .left-links { align-items: flex-start; }
+  .right {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #E8E6E0;
+    padding-top: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="left">
+    <h1>Christopher<br><span>Chenyi</span><br>Keyser</h1>
+    <div class="left-links">
+      <a href="https://www.linkedin.com/in/chenyikeyser/" target="_blank">LinkedIn →</a>
+    </div>
+  </div>
+
+  <div class="right">
+    <p class="bio">I like building things that make the numbers make sense. I spent four years growing, fixing, and occasionally rescuing the finance function at a couple of fast-growing veterinary companies. I've been through capital raises, an acquisition, a merger, and more month-end closes than I can count. I like making complex financials simple, hiking when I can, and finding good coffee wherever I go.</p>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-row"><span class="tl-yr">2026 – Present</span><span class="tl-role">Associate, Restructuring <span class="tl-co">· G2 Capital Advisors</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2024 – 25</span><span class="tl-role">Finance Manager, FP&A <span class="tl-co">· The Vets</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2021 – 24</span><span class="tl-role">Asst. Controller <span class="tl-co">· BetterVet</span></span></div>
+      <div class="tl-row"><span class="tl-yr">2020</span><span class="tl-role">Management Consulting <span class="tl-co">· Spur Reply</span></span></div>
+    </div>
+    <div class="footer">Boston, MA · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
